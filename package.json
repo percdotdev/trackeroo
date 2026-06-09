@@ -1,39 +1,48 @@
 {
   "name": "trackeroo",
+  "version": "1.0.5",
+  "private": true,
   "description": "Open CS2 stat trackers from Steam profiles",
   "repository": {
     "type": "git",
     "url": "https://github.com/percdotdev/trackeroo.git"
   },
-  "private": true,
-  "version": "1.0.5",
   "type": "module",
   "scripts": {
-    "dev": "wxt",
-    "dev:firefox": "wxt -b firefox",
     "build": "wxt build",
     "build:firefox": "wxt build -b firefox",
-    "zip": "wxt zip",
-    "zip:firefox": "wxt zip -b firefox",
-    "compile": "tsc --noEmit",
+    "check": "ultracite check",
     "check:locales": "bun scripts/check-locales.ts",
-    "postinstall": "wxt prepare",
+    "compile": "tsc --noEmit",
+    "deps:update": "pnpm dlx taze -r -w -f",
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "fix": "ultracite fix",
     "icons": "python scripts/generate-icon.py",
-    "release": "bumpp"
+    "postinstall": "wxt prepare",
+    "json:sort": "bun run scripts/json-sort.ts",
+    "prepare": "husky",
+    "release": "bumpp",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox"
   },
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.16",
     "@tailwindcss/vite": "^4.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@wxt-dev/module-react": "^1.1.5",
     "bumpp": "^11.1.0",
+    "husky": "^9.1.7",
     "postcss-rem-to-responsive-pixel": "^7.0.4",
+    "sort-package-json": "^4.0.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^5.9.3",
+    "ultracite": "7.8.2",
     "wxt": "^0.20.26"
   }
 }
