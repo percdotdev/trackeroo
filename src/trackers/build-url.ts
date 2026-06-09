@@ -1,7 +1,6 @@
 import { getSteamProfileBaseUrl } from "@/steam/profile-url";
 import type { HostTransform, Tracker } from "./types";
 
-const _WWW_PREFIX = /^www\./;
 const COM_TLD_SUFFIX = /\.com$/;
 
 function applyHostTransform(baseUrl: string, transform: HostTransform): string {

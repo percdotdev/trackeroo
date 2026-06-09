@@ -1,5 +1,5 @@
-import { Toggle } from "@/components/Toggle";
-import { t } from "@/lib/i18n";
+import { Toggle } from "@/components/popup/Toggle";
+import { t } from "@/i18n/runtime";
 import type { TrackerPreferences } from "@/preferences/types";
 import { getTrackerHost, TRACKERS } from "@/trackers/catalog";
 import type { TrackerId } from "@/trackers/types";
