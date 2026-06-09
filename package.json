@@ -1,6 +1,10 @@
 {
   "name": "trackeroo",
   "description": "Open CS2 stat trackers from Steam profiles",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/percdotdev/trackeroo.git"
+  },
   "private": true,
   "version": "0.0.0",
   "type": "module",
