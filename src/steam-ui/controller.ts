@@ -2,7 +2,8 @@ import type { ContentScriptContext } from "#imports";
 import { initI18n } from "@/i18n/runtime";
 import { getSteamProfileBaseUrl } from "@/steam/profile-url";
 import { getEnabledTrackers } from "@/trackers/enabled";
-import { STEAM_SIDEBAR_ANCHOR, TRACKEROO_ROOT_ATTR } from "./constants";
+import { resolveSidebarAnchor } from "./anchors";
+import { TRACKEROO_ROOT_ATTR } from "./constants";
 import { mountTrackerUi } from "./mount-ui";
 
 export function createTrackerDropdownController(ctx: ContentScriptContext) {
@@ -21,10 +22,10 @@ export function createTrackerDropdownController(ctx: ContentScriptContext) {
     await initI18n();
 
     const baseUrl = getSteamProfileBaseUrl(location.href);
-    const anchor = document.querySelector(STEAM_SIDEBAR_ANCHOR);
+    const sidebar = resolveSidebarAnchor();
     const enabledTrackers = await getEnabledTrackers();
 
-    if (!(baseUrl && anchor)) {
+    if (!(baseUrl && sidebar)) {
       teardown();
       return;
     }
@@ -44,11 +45,20 @@ export function createTrackerDropdownController(ctx: ContentScriptContext) {
 
     ui = createIntegratedUi(ctx, {
       position: "inline",
-      anchor: STEAM_SIDEBAR_ANCHOR,
+      anchor: sidebar.selector,
       append: "first",
       onMount(container) {
-        container.setAttribute(TRACKEROO_ROOT_ATTR, "");
-        mountTrackerUi(ctx, container, enabledTrackers, location.href);
+        let mountTarget = container;
+
+        if (sidebar.isFallback) {
+          const wrapper = document.createElement("div");
+          wrapper.className = "responsive_count_link_area";
+          container.append(wrapper);
+          mountTarget = wrapper;
+        }
+
+        mountTarget.setAttribute(TRACKEROO_ROOT_ATTR, "");
+        mountTrackerUi(ctx, mountTarget, enabledTrackers, location.href);
       },
     });
 
