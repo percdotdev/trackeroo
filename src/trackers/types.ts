@@ -13,9 +13,6 @@ export type HostTransform =
 
 export type Tracker = {
   id: TrackerId;
-  label: string;
   homeUrl: string;
   transform: HostTransform;
-  manualHint: string;
-  manualExample: string;
 };

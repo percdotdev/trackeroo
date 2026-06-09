@@ -43,5 +43,23 @@
   },
   "languageSystem": {
     "message": "跟随系统"
+  },
+  "trackerEnabled": {
+    "message": "$1 已启用",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "csstats.gg"
+      }
+    }
+  },
+  "trackerDisabled": {
+    "message": "$1 已禁用",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "csstats.gg"
+      }
+    }
   }
 }

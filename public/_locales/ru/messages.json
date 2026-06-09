@@ -43,5 +43,23 @@
   },
   "languageSystem": {
     "message": "Системный"
+  },
+  "trackerEnabled": {
+    "message": "$1 включён",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "csstats.gg"
+      }
+    }
+  },
+  "trackerDisabled": {
+    "message": "$1 выключен",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "csstats.gg"
+      }
+    }
   }
 }

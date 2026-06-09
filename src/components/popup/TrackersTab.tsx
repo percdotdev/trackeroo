@@ -43,6 +43,11 @@ export function TrackersTab({ preferences, onToggle, onSetAll }: TrackersTabProp
               <Toggle
                 checked={preferences[tracker.id]}
                 onChange={() => onToggle(tracker.id)}
+                ariaLabel={
+                  preferences[tracker.id]
+                    ? t('trackerEnabled', getTrackerHost(tracker))
+                    : t('trackerDisabled', getTrackerHost(tracker))
+                }
               />
             </label>
           </li>

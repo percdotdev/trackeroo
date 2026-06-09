@@ -16,6 +16,7 @@
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
+    "check:locales": "bun scripts/check-locales.ts",
     "postinstall": "wxt prepare",
     "icons": "python scripts/generate-icon.py",
     "release": "bumpp"
