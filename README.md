@@ -35,6 +35,20 @@ bun run build   # production build → .output/chrome-mv3
 bun run zip     # packaged zip for store upload
 ```
 
+## Release
+
+```bash
+bun run release   # bumpp: bump version, commit, tag v*, push
+```
+
+Pushing a `v*` tag triggers the [release workflow](.github/workflows/release.yml) — builds a zip and attaches it to a GitHub Release. Enable `CHROME_SUBMIT_ENABLED` + Chrome secrets for automated Web Store uploads.
+
+## Privacy
+
+[Privacy Policy](PRIVACY.md) — use this URL in the Chrome Web Store listing:
+
+`https://github.com/percdotdev/trackeroo/blob/main/PRIVACY.md`
+
 ## Contributing
 
 Tracker site missing? Open an [issue](https://github.com/percdotdev/trackeroo/issues) or [PR](https://github.com/percdotdev/trackeroo) — tracker definitions live in `src/trackers/catalog.ts`.
