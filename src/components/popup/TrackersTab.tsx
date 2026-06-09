@@ -1,5 +1,5 @@
 import { Toggle } from '@/components/Toggle';
-import { TRACKERS } from '@/trackers/catalog';
+import { TRACKERS, getTrackerHost } from '@/trackers/catalog';
 import type { TrackerId } from '@/trackers/types';
 import type { TrackerPreferences } from '@/preferences/types';
 
@@ -14,42 +14,36 @@ export function TrackersTab({ preferences, onToggle, onSetAll }: TrackersTabProp
   const allOff = TRACKERS.every((tracker) => !preferences[tracker.id]);
 
   return (
-    <div>
-      <div className="mb-2 flex gap-3 text-[11px]">
+    <div className="flex flex-col gap-4">
+      <div className="grid grid-cols-2 gap-2">
         <button
           type="button"
           disabled={allOn}
           onClick={() => onSetAll(true)}
-          className="text-[#66c0f4] hover:text-white disabled:cursor-default disabled:text-[#56707f]"
+          className="rounded border border-neutral-700 px-3 py-2 text-[13px] text-white transition-colors hover:border-neutral-500 disabled:cursor-default disabled:border-neutral-800 disabled:text-neutral-600"
         >
-          Enable all
+          Turn all on
         </button>
         <button
           type="button"
           disabled={allOff}
           onClick={() => onSetAll(false)}
-          className="text-[#66c0f4] hover:text-white disabled:cursor-default disabled:text-[#56707f]"
+          className="rounded border border-neutral-700 px-3 py-2 text-[13px] text-white transition-colors hover:border-neutral-500 disabled:cursor-default disabled:border-neutral-800 disabled:text-neutral-600"
         >
-          Disable all
+          Turn all off
         </button>
       </div>
-      <ul>
+
+      <ul className="divide-y divide-neutral-800 border-y border-neutral-800">
         {TRACKERS.map((tracker) => (
           <li key={tracker.id}>
-            <div className="flex items-center justify-between py-[7px]">
-              <a
-                href={tracker.homeUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[#c7d5e0] hover:text-[#66c0f4]"
-              >
-                {tracker.label}
-              </a>
+            <label className="flex cursor-pointer items-center justify-between gap-4 py-3.5">
+              <span className="text-[15px] text-white">{getTrackerHost(tracker)}</span>
               <Toggle
                 checked={preferences[tracker.id]}
                 onChange={() => onToggle(tracker.id)}
               />
-            </div>
+            </label>
           </li>
         ))}
       </ul>

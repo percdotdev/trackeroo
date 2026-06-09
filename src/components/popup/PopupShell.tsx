@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { GITHUB_URL } from '@/lib/constants';
+import { GITHUB_TRACKER_REQUEST_URL } from '@/lib/constants';
 
 type PopupShellProps = {
   children: ReactNode;
@@ -7,19 +7,26 @@ type PopupShellProps = {
 
 export function PopupShell({ children }: PopupShellProps) {
   return (
-    <div className="flex h-[280px] w-[260px] flex-col bg-[#1b2838] text-[13px] leading-none text-[#c7d5e0]">
-      <header className="flex items-baseline justify-between px-3 pt-3">
-        <h1 className="text-[15px] font-normal text-white">Trackeroo</h1>
+    <div className="flex min-h-[400px] w-[300px] flex-col bg-black text-sm text-neutral-300">
+      <header className="border-b border-neutral-800 px-5 py-4">
+        <h1 className="text-base font-medium text-white">Trackeroo</h1>
+        <p className="mt-1 text-[13px] leading-snug text-neutral-500">
+          Choose which stat sites appear on Steam profiles.
+        </p>
+      </header>
+
+      <main className="flex-1 overflow-y-auto px-5 py-4">{children}</main>
+
+      <footer className="border-t border-neutral-800 px-5 py-3">
         <a
-          href={GITHUB_URL}
+          href={GITHUB_TRACKER_REQUEST_URL}
           target="_blank"
           rel="noreferrer"
-          className="text-[11px] text-[#56707f] hover:text-[#66c0f4]"
+          className="text-[13px] text-neutral-500 underline decoration-neutral-700 underline-offset-2 hover:text-white hover:decoration-neutral-500"
         >
-          github
+          Suggest a site
         </a>
-      </header>
-      {children}
+      </footer>
     </div>
   );
 }

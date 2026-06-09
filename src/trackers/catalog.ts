@@ -60,3 +60,7 @@ export const TRACKERS: Tracker[] = [
 ];
 
 export const TRACKER_IDS = TRACKERS.map((tracker) => tracker.id);
+
+export function getTrackerHost(tracker: Tracker): string {
+  return new URL(tracker.homeUrl).hostname.replace(/^www\./, '');
+}
