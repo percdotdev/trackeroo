@@ -50,6 +50,16 @@ export async function setTrackerPreference(
   await browser.storage.local.set({ [SETTINGS_KEY]: preferences });
 }
 
+export async function setAllTrackerPreferences(
+  enabled: boolean,
+): Promise<TrackerPreferences> {
+  const preferences = Object.fromEntries(
+    TRACKER_IDS.map((id) => [id, enabled]),
+  ) as TrackerPreferences;
+  await browser.storage.local.set({ [SETTINGS_KEY]: preferences });
+  return preferences;
+}
+
 export async function getEnabledTrackers(): Promise<Tracker[]> {
   const preferences = await getTrackerPreferences();
   return TRACKERS.filter((tracker) => preferences[tracker.id]);

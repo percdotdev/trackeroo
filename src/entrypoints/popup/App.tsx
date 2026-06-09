@@ -9,14 +9,18 @@ import type { PopupTab } from '@/lib/popup-tabs';
 
 function App() {
   const [tab, setTab] = useState<PopupTab>('trackers');
-  const { preferences, toggle } = useTrackerPreferences();
+  const { preferences, toggle, setAll } = useTrackerPreferences();
 
   return (
     <PopupShell>
       <TabBar activeTab={tab} onChange={setTab} />
       <main className="flex-1 overflow-y-auto px-3 py-2.5">
         {tab === 'trackers' && (
-          <TrackersTab preferences={preferences} onToggle={toggle} />
+          <TrackersTab
+            preferences={preferences}
+            onToggle={toggle}
+            onSetAll={setAll}
+          />
         )}
         {tab === 'manual' && <ManualTab />}
         {tab === 'info' && <InfoTab />}

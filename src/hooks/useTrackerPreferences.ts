@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   getDefaultPreferences,
   getTrackerPreferences,
+  setAllTrackerPreferences,
   setTrackerPreference,
 } from '@/preferences/storage';
 import type { TrackerId } from '@/trackers/types';
@@ -24,5 +25,17 @@ export function useTrackerPreferences() {
     });
   };
 
-  return { preferences, toggle };
+  const setAll = (enabled: boolean) => {
+    const previous = preferences;
+    setPreferences(
+      Object.fromEntries(
+        Object.keys(preferences).map((id) => [id, enabled]),
+      ) as TrackerPreferences,
+    );
+    setAllTrackerPreferences(enabled).catch(() => {
+      setPreferences(previous);
+    });
+  };
+
+  return { preferences, toggle, setAll };
 }
