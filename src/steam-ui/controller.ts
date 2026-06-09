@@ -1,4 +1,5 @@
 import type { ContentScriptContext } from '#imports';
+import { initI18n } from '@/lib/i18n';
 import { getEnabledTrackers } from '@/preferences/storage';
 import { getSteamProfileBaseUrl } from '@/steam/profile-url';
 import { STEAM_SIDEBAR_ANCHOR, TRACKEROO_ROOT_ATTR } from './constants';
@@ -17,6 +18,8 @@ export function createTrackerDropdownController(ctx: ContentScriptContext) {
   };
 
   const sync = async () => {
+    await initI18n();
+
     const baseUrl = getSteamProfileBaseUrl(location.href);
     const anchor = document.querySelector(STEAM_SIDEBAR_ANCHOR);
     const enabledTrackers = await getEnabledTrackers();

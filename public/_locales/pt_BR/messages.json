@@ -1,0 +1,47 @@
+{
+  "extName": {
+    "message": "Trackeroo"
+  },
+  "extDescription": {
+    "message": "Abra rastreadores de estatísticas do CS2 a partir de perfis Steam"
+  },
+  "popupSubtitle": {
+    "message": "Escolha quais sites de estatísticas aparecem nos perfis Steam."
+  },
+  "openSource": {
+    "message": "Código aberto"
+  },
+  "suggestSite": {
+    "message": "Sugerir um site"
+  },
+  "turnAllOn": {
+    "message": "Ativar todos"
+  },
+  "turnAllOff": {
+    "message": "Desativar todos"
+  },
+  "trackers": {
+    "message": "Rastreadores"
+  },
+  "trackersWithCount": {
+    "message": "Rastreadores ($1)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noTrackersEnabled": {
+    "message": "Nenhum rastreador ativado"
+  },
+  "emptyStateTitle": {
+    "message": "Abra o Trackeroo na barra de ferramentas do navegador para ativar sites"
+  },
+  "language": {
+    "message": "Idioma"
+  },
+  "languageSystem": {
+    "message": "Sistema"
+  }
+}

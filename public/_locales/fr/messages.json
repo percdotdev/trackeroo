@@ -1,0 +1,47 @@
+{
+  "extName": {
+    "message": "Trackeroo"
+  },
+  "extDescription": {
+    "message": "Ouvrir les trackers de stats CS2 depuis les profils Steam"
+  },
+  "popupSubtitle": {
+    "message": "Choisissez quels sites de stats apparaissent sur les profils Steam."
+  },
+  "openSource": {
+    "message": "Open source"
+  },
+  "suggestSite": {
+    "message": "Proposer un site"
+  },
+  "turnAllOn": {
+    "message": "Tout activer"
+  },
+  "turnAllOff": {
+    "message": "Tout désactiver"
+  },
+  "trackers": {
+    "message": "Trackers"
+  },
+  "trackersWithCount": {
+    "message": "Trackers ($1)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noTrackersEnabled": {
+    "message": "Aucun tracker activé"
+  },
+  "emptyStateTitle": {
+    "message": "Ouvrez Trackeroo depuis la barre d'outils du navigateur pour activer des sites"
+  },
+  "language": {
+    "message": "Langue"
+  },
+  "languageSystem": {
+    "message": "Système"
+  }
+}

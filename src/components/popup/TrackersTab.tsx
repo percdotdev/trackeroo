@@ -1,4 +1,5 @@
 import { Toggle } from '@/components/Toggle';
+import { t } from '@/lib/i18n';
 import { TRACKERS, getTrackerHost } from '@/trackers/catalog';
 import type { TrackerId } from '@/trackers/types';
 import type { TrackerPreferences } from '@/preferences/types';
@@ -22,7 +23,7 @@ export function TrackersTab({ preferences, onToggle, onSetAll }: TrackersTabProp
           onClick={() => onSetAll(true)}
           className="rounded border border-neutral-700 px-3 py-2 text-[13px] text-white transition-colors hover:border-neutral-500 disabled:cursor-default disabled:border-neutral-800 disabled:text-neutral-600"
         >
-          Turn all on
+          {t('turnAllOn')}
         </button>
         <button
           type="button"
@@ -30,7 +31,7 @@ export function TrackersTab({ preferences, onToggle, onSetAll }: TrackersTabProp
           onClick={() => onSetAll(false)}
           className="rounded border border-neutral-700 px-3 py-2 text-[13px] text-white transition-colors hover:border-neutral-500 disabled:cursor-default disabled:border-neutral-800 disabled:text-neutral-600"
         >
-          Turn all off
+          {t('turnAllOff')}
         </button>
       </div>
 

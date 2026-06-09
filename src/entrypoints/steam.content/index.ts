@@ -1,3 +1,4 @@
+import { LOCALE_KEY } from '@/preferences/locale';
 import { SETTINGS_KEY, handleExtensionInstalled } from '@/preferences/storage';
 import { STEAM_PROFILE_MATCHES } from '@/lib/constants';
 import { createTrackerDropdownController } from '@/steam-ui/controller';
@@ -18,7 +19,8 @@ export default defineContentScript({
     });
 
     browser.storage.onChanged.addListener((changes, area) => {
-      if (area === 'local' && changes[SETTINGS_KEY]) {
+      if (area !== 'local') return;
+      if (changes[SETTINGS_KEY] || changes[LOCALE_KEY]) {
         dropdown.invalidate();
         dropdown.sync();
       }

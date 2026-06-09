@@ -1,0 +1,47 @@
+{
+  "extName": {
+    "message": "Trackeroo"
+  },
+  "extDescription": {
+    "message": "从 Steam 个人资料打开 CS2 战绩追踪网站"
+  },
+  "popupSubtitle": {
+    "message": "选择在 Steam 个人资料中显示哪些战绩网站。"
+  },
+  "openSource": {
+    "message": "开源"
+  },
+  "suggestSite": {
+    "message": "推荐网站"
+  },
+  "turnAllOn": {
+    "message": "全部开启"
+  },
+  "turnAllOff": {
+    "message": "全部关闭"
+  },
+  "trackers": {
+    "message": "追踪器"
+  },
+  "trackersWithCount": {
+    "message": "追踪器（$1）",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noTrackersEnabled": {
+    "message": "未启用追踪器"
+  },
+  "emptyStateTitle": {
+    "message": "从浏览器工具栏打开 Trackeroo 以启用网站"
+  },
+  "language": {
+    "message": "语言"
+  },
+  "languageSystem": {
+    "message": "跟随系统"
+  }
+}

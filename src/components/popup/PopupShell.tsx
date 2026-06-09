@@ -1,21 +1,29 @@
 import type { ReactNode } from 'react';
+import { LanguagePicker } from '@/components/popup/LanguagePicker';
 import { GITHUB_TRACKER_REQUEST_URL, GITHUB_URL } from '@/lib/constants';
+import { t } from '@/lib/i18n';
+import type { StoredLocale } from '@/lib/locales';
 
 const footerLinkClass =
   'text-[13px] text-neutral-500 underline decoration-neutral-700 underline-offset-2 hover:text-white hover:decoration-neutral-500';
 
 type PopupShellProps = {
   children: ReactNode;
+  locale: StoredLocale;
+  onLocaleChange: (locale: StoredLocale) => void;
 };
 
-export function PopupShell({ children }: PopupShellProps) {
+export function PopupShell({ children, locale, onLocaleChange }: PopupShellProps) {
   return (
     <div className="flex min-h-[400px] w-[300px] flex-col bg-black text-sm text-neutral-300">
-      <header className="border-b border-neutral-800 px-5 py-4">
-        <h1 className="text-base font-medium text-white">Trackeroo</h1>
-        <p className="mt-1 text-[13px] leading-snug text-neutral-500">
-          Choose which stat sites appear on Steam profiles.
-        </p>
+      <header className="space-y-3 border-b border-neutral-800 px-5 py-4">
+        <div>
+          <h1 className="text-base font-medium text-white">{t('extName')}</h1>
+          <p className="mt-1 text-[13px] leading-snug text-neutral-500">
+            {t('popupSubtitle')}
+          </p>
+        </div>
+        <LanguagePicker locale={locale} onChange={onLocaleChange} />
       </header>
 
       <main className="flex-1 overflow-y-auto px-5 py-4">{children}</main>
@@ -27,7 +35,7 @@ export function PopupShell({ children }: PopupShellProps) {
           rel="noreferrer"
           className={footerLinkClass}
         >
-          Open source
+          {t('openSource')}
         </a>
         <span className="text-neutral-700" aria-hidden="true">
           ·
@@ -38,7 +46,7 @@ export function PopupShell({ children }: PopupShellProps) {
           rel="noreferrer"
           className={footerLinkClass}
         >
-          Suggest a site
+          {t('suggestSite')}
         </a>
       </footer>
     </div>

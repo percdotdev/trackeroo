@@ -6,8 +6,9 @@ export default defineConfig({
   srcDir: 'src',
   modules: ['@wxt-dev/module-react'],
   manifest: {
-    name: 'Trackeroo',
-    description: 'Open CS2 stat trackers from Steam profiles',
+    name: '__MSG_extName__',
+    description: '__MSG_extDescription__',
+    default_locale: 'en',
     permissions: ['storage'],
   },
   vite: () => ({

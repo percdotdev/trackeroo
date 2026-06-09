@@ -1,0 +1,47 @@
+{
+  "extName": {
+    "message": "Trackeroo"
+  },
+  "extDescription": {
+    "message": "Открывайте CS2-трекеры статистики со страниц профилей Steam"
+  },
+  "popupSubtitle": {
+    "message": "Выберите, какие сайты статистики показывать в профилях Steam."
+  },
+  "openSource": {
+    "message": "Открытый код"
+  },
+  "suggestSite": {
+    "message": "Предложить сайт"
+  },
+  "turnAllOn": {
+    "message": "Включить все"
+  },
+  "turnAllOff": {
+    "message": "Выключить все"
+  },
+  "trackers": {
+    "message": "Трекеры"
+  },
+  "trackersWithCount": {
+    "message": "Трекеры ($1)",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "noTrackersEnabled": {
+    "message": "Нет включённых трекеров"
+  },
+  "emptyStateTitle": {
+    "message": "Откройте Trackeroo на панели браузера, чтобы включить сайты"
+  },
+  "language": {
+    "message": "Язык"
+  },
+  "languageSystem": {
+    "message": "Системный"
+  }
+}

@@ -1,3 +1,4 @@
+import { t } from '@/lib/i18n';
 import { getTrackerHost } from '@/trackers/catalog';
 import { buildTrackerUrl } from '@/trackers/build-url';
 import type { Tracker } from '@/trackers/types';
@@ -36,7 +37,7 @@ export function createDropdownTrigger(count: number): HTMLDivElement {
   trigger.setAttribute('aria-expanded', 'false');
   trigger.setAttribute('aria-haspopup', 'true');
 
-  const label = count > 0 ? `Trackers (${count})` : 'Trackers';
+  const label = count > 0 ? t('trackersWithCount', String(count)) : t('trackers');
   trigger.innerHTML =
     '<a href="#" class="trackeroo-trigger-link" tabindex="-1">' +
     `<span class="count_link_label">${label}</span>&nbsp;` +
@@ -62,8 +63,7 @@ export function createDirectLink(tracker: Tracker, pageUrl: string): HTMLAnchorE
 export function createEmptyState(): HTMLDivElement {
   const el = document.createElement('div');
   el.className = 'profile_count_link ellipsis trackeroo-empty';
-  el.title = 'Open Trackeroo from your browser toolbar to enable sites';
-  el.innerHTML =
-    '<span class="count_link_label">No trackers enabled</span>';
+  el.title = t('emptyStateTitle');
+  el.innerHTML = `<span class="count_link_label">${t('noTrackersEnabled')}</span>`;
   return el;
 }
