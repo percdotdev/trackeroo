@@ -1,54 +1,34 @@
 # Trackeroo
 
-Browser extension that adds a **CS2 Trackers** menu to Steam profile pages. One click opens the player's stats on third-party tracker sites — no copy-paste, no URL hacking.
+CS2 stat tracker links on Steam Community profile pages. Adds a dropdown on `/id/*` and `/profiles/*` profiles.
 
-Works on vanity profiles (`/id/username`) and SteamID64 profiles (`/profiles/7656119…`).
+**Chrome Web Store:** submitted, pending review.
 
-## Supported trackers
+## Trackers
 
-| Site | URL trick |
+| Site | Trick |
 | --- | --- |
-| CSStats | `x` + steamcommunity.com |
-| CSRep | `w` + steamcommunity.com |
-| CSST | `.com` → `.rip` |
-| Luminary | `.com` → `.pub` |
-| Leetify | `.com` → `.gg` |
-| CS2 Tracker | `.com` → `.tips` |
+| CSStats | `xsteamcommunity.com/...` |
+| CSRep | `wsteamcommunity.com/...` |
+| CSST | `steamcommunity.rip/...` |
+| Luminary | `steamcommunity.pub/...` |
+| Leetify | `steamcommunity.gg/...` |
+| CS2 Tracker | `steamcommunity.ai/...` |
+| Scope.gg | `steamcommunity.org/...` |
+| CS2Scan | `steamcommunity.to/...` |
 
-Example: `steamcommunity.com/id/player` → `steamcommunity.gg/id/player`
-
-Enable or disable individual trackers from the extension popup. All are on by default.
+Toggle trackers in the extension popup. [Privacy policy](PRIVACY.md).
 
 ## Development
 
-Requires [Bun](https://bun.sh) (or npm/pnpm).
-
 ```bash
 bun install
-bun run dev
+bun run dev      # .output/chrome-mv3-dev
+bun run build
+bun run zip
+bun run release  # version bump + tag
 ```
-
-Load the unpacked extension from `.output/chrome-mv3-dev` (or let WXT open the browser for you).
-
-```bash
-bun run build   # production build → .output/chrome-mv3
-bun run zip     # packaged zip for store upload
-```
-
-## Release
-
-```bash
-bun run release   # bumpp: bump version, commit, tag v*, push
-```
-
-Pushing a `v*` tag triggers the [release workflow](.github/workflows/release.yml) — builds a zip and attaches it to a GitHub Release. Enable `CHROME_SUBMIT_ENABLED` + Chrome secrets for automated Web Store uploads.
-
-## Privacy
-
-[Privacy Policy](PRIVACY.md) — use this URL in the Chrome Web Store listing:
-
-`https://github.com/percdotdev/trackeroo/blob/main/PRIVACY.md`
 
 ## Contributing
 
-Tracker site missing? Open an [issue](https://github.com/percdotdev/trackeroo/issues) or [PR](https://github.com/percdotdev/trackeroo) — tracker definitions live in `src/trackers/catalog.ts`.
+Use the [tracker request issue](https://github.com/percdotdev/trackeroo/issues/new?template=tracker-request.yml) — name, URL trick, and an example URL. PRs to `src/trackers/catalog.ts` also welcome.
