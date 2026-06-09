@@ -4,6 +4,7 @@ export const TRACKERS: Tracker[] = [
   {
     id: 'csstats',
     label: 'CSStats',
+    homeUrl: 'https://csstats.gg',
     transform: { type: 'prefix', value: 'x' },
     manualHint: 'Add x before steamcommunity',
     manualExample: 'xsteamcommunity.com/id/player',
@@ -11,6 +12,7 @@ export const TRACKERS: Tracker[] = [
   {
     id: 'csrep',
     label: 'CSRep',
+    homeUrl: 'https://csrep.gg',
     transform: { type: 'prefix', value: 'w' },
     manualHint: 'Add w before steamcommunity',
     manualExample: 'wsteamcommunity.com/id/player',
@@ -18,6 +20,7 @@ export const TRACKERS: Tracker[] = [
   {
     id: 'csst',
     label: 'CSST',
+    homeUrl: 'https://csst.at',
     transform: { type: 'tld', value: 'rip' },
     manualHint: 'Change .com to .rip',
     manualExample: 'steamcommunity.rip/id/player',
@@ -25,6 +28,7 @@ export const TRACKERS: Tracker[] = [
   {
     id: 'luminary',
     label: 'Luminary',
+    homeUrl: 'https://luminary.pw',
     transform: { type: 'tld', value: 'pub' },
     manualHint: 'Change .com to .pub',
     manualExample: 'steamcommunity.pub/id/player',
@@ -32,6 +36,7 @@ export const TRACKERS: Tracker[] = [
   {
     id: 'leetify',
     label: 'Leetify',
+    homeUrl: 'https://leetify.com',
     transform: { type: 'tld', value: 'gg' },
     manualHint: 'Change .com to .gg',
     manualExample: 'steamcommunity.gg/id/player',
@@ -39,6 +44,7 @@ export const TRACKERS: Tracker[] = [
   {
     id: 'cs2tracker',
     label: 'CS2 Tracker',
+    homeUrl: 'https://cs2tracker.gg',
     transform: { type: 'tld', value: 'ai' },
     manualHint: 'Change .com to .ai',
     manualExample: 'steamcommunity.ai/id/player',
@@ -46,16 +52,10 @@ export const TRACKERS: Tracker[] = [
   {
     id: 'scope',
     label: 'Scope.gg',
+    homeUrl: 'https://scope.gg',
     transform: { type: 'tld', value: 'org' },
     manualHint: 'Change .com to .org',
     manualExample: 'steamcommunity.org/id/player',
-  },
-  {
-    id: 'cs2scan',
-    label: 'CS2Scan',
-    transform: { type: 'tld', value: 'to' },
-    manualHint: 'Change .com to .to',
-    manualExample: 'steamcommunity.to/id/player',
   },
 ];
 

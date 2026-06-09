@@ -5,8 +5,7 @@ export type TrackerId =
   | 'luminary'
   | 'leetify'
   | 'cs2tracker'
-  | 'scope'
-  | 'cs2scan';
+  | 'scope';
 
 export type HostTransform =
   | { type: 'prefix'; value: string }
@@ -15,6 +14,7 @@ export type HostTransform =
 export type Tracker = {
   id: TrackerId;
   label: string;
+  homeUrl: string;
   transform: HostTransform;
   manualHint: string;
   manualExample: string;
