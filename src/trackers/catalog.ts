@@ -39,9 +39,23 @@ export const TRACKERS: Tracker[] = [
   {
     id: 'cs2tracker',
     label: 'CS2 Tracker',
-    transform: { type: 'tld', value: 'tips' },
-    manualHint: 'Change .com to .tips',
-    manualExample: 'steamcommunity.tips/id/player',
+    transform: { type: 'tld', value: 'ai' },
+    manualHint: 'Change .com to .ai',
+    manualExample: 'steamcommunity.ai/id/player',
+  },
+  {
+    id: 'scope',
+    label: 'Scope.gg',
+    transform: { type: 'tld', value: 'org' },
+    manualHint: 'Change .com to .org',
+    manualExample: 'steamcommunity.org/id/player',
+  },
+  {
+    id: 'cs2scan',
+    label: 'CS2Scan',
+    transform: { type: 'tld', value: 'to' },
+    manualHint: 'Change .com to .to',
+    manualExample: 'steamcommunity.to/id/player',
   },
 ];
 

@@ -4,7 +4,9 @@ export type TrackerId =
   | 'csst'
   | 'luminary'
   | 'leetify'
-  | 'cs2tracker';
+  | 'cs2tracker'
+  | 'scope'
+  | 'cs2scan';
 
 export type HostTransform =
   | { type: 'prefix'; value: string }
