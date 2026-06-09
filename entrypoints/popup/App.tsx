@@ -1,34 +1,42 @@
 import { useState } from 'react';
 import reactLogo from '@/assets/react.svg';
 import wxtLogo from '/wxt.svg';
-import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div>
-        <a href="https://wxt.dev" target="_blank">
-          <img src={wxtLogo} className="logo" alt="WXT logo" />
+    <div className="mx-auto w-80 p-8 text-center">
+      <div className="flex justify-center gap-4">
+        <a href="https://wxt.dev" target="_blank" rel="noreferrer">
+          <img
+            src={wxtLogo}
+            className="h-24 p-6 transition-[filter] hover:drop-shadow-[0_0_2em_#54bc4ae0]"
+            alt="WXT logo"
+          />
         </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a href="https://react.dev" target="_blank" rel="noreferrer">
+          <img
+            src={reactLogo}
+            className="h-24 p-6 motion-safe:animate-[spin_20s_linear_infinite] transition-[filter] hover:drop-shadow-[0_0_2em_#61dafbaa]"
+            alt="React logo"
+          />
         </a>
       </div>
-      <h1>WXT + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+      <h1 className="text-3xl font-bold leading-tight">Trackeroo</h1>
+      <div className="py-8">
+        <button
+          type="button"
+          className="rounded-lg border border-transparent bg-neutral-900 px-5 py-2.5 font-medium text-white transition-colors hover:border-indigo-500 dark:bg-neutral-100 dark:text-neutral-900"
+          onClick={() => setCount((count) => count + 1)}
+        >
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+        <p className="mt-4 text-neutral-500">
+          Tailwind is wired up. Edit <code>entrypoints/popup/App.tsx</code>.
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the WXT and React logos to learn more
-      </p>
-    </>
+    </div>
   );
 }
 
