@@ -6,6 +6,7 @@ export default {
       rootValue: 16,
       propList: ['*'],
       transformUnit: 'px',
+      exclude: (file) => !file?.includes('steam.content'),
     }),
   ],
 };
