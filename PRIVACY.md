@@ -10,7 +10,12 @@ Trackeroo does not collect, transmit, or sell personal data. Everything stays on
 
 ## Data stored locally
 
-The extension uses `browser.storage.local` to remember which CS2 trackers you have enabled or disabled. These preferences are stored only in your browser and are never sent to us or any third party.
+The extension uses `browser.storage.local` to save settings on your device:
+
+- **Tracker preferences** — which CS2 stat sites are enabled or disabled
+- **Language** — your chosen display language, or “System” to follow the browser default
+
+Nothing in storage is sent to us or any third party. UI translations are bundled with the extension; no language or preference data is uploaded.
 
 ## What the extension accesses
 
