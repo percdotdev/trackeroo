@@ -1,3 +1,4 @@
+import { getTrackerHost } from '@/trackers/catalog';
 import { buildTrackerUrl } from '@/trackers/build-url';
 import type { Tracker } from '@/trackers/types';
 
@@ -20,7 +21,7 @@ export function createDropdownMenu(
     item.target = '_blank';
     item.rel = 'noopener noreferrer';
     item.setAttribute('role', 'menuitem');
-    item.textContent = tracker.label;
+    item.textContent = getTrackerHost(tracker);
     menu.append(item);
   }
 
@@ -54,7 +55,7 @@ export function createDirectLink(tracker: Tracker, pageUrl: string): HTMLAnchorE
   link.href = url;
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
-  link.innerHTML = `<span class="count_link_label">${tracker.label}</span>`;
+  link.innerHTML = `<span class="count_link_label">${getTrackerHost(tracker)}</span>`;
   return link;
 }
 
