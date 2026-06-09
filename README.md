@@ -1,34 +1,34 @@
 # Trackeroo
 
-CS2 stat tracker links on Steam Community profile pages. Adds a dropdown on `/id/*` and `/profiles/*` profiles.
+Opens CS2 stat sites from Steam profile pages. On any profile, use the **CS2 Trackers** menu in the sidebar and pick where you want to go.
 
-**Chrome Web Store:** submitted, pending review.
+Coming to the [Chrome Web Store](https://chromewebstore.google.com/) — review in progress.
+
+## Install
+
+Once approved, install from the Chrome Web Store. Works in Chrome, Brave, Edge, and the Steam in-game browser.
+
+Until then, load the extension unpacked from a release zip (see [Releases](https://github.com/percdotdev/trackeroo/releases)).
 
 ## Trackers
 
-| Site | Trick |
-| --- | --- |
-| CSStats | `xsteamcommunity.com/...` |
-| CSRep | `wsteamcommunity.com/...` |
-| CSST | `steamcommunity.rip/...` |
-| Luminary | `steamcommunity.pub/...` |
-| Leetify | `steamcommunity.gg/...` |
-| CS2 Tracker | `steamcommunity.ai/...` |
-| Scope.gg | `steamcommunity.org/...` |
-| CS2Scan | `steamcommunity.to/...` |
+- CSStats — matchmaking stats
+- CSRep — deep stat comparison
+- CSST — combined Faceit / Leetify / CSStats view
+- Luminary
+- Leetify
+- CS2 Tracker
+- Scope.gg — demo and aim analysis
+- CS2Scan — cheat / smurf signals
 
-Toggle trackers in the extension popup. [Privacy policy](PRIVACY.md).
+Turn individual sites on or off from the extension icon (popup → Trackers).
 
-## Development
+## Suggest a site
 
-```bash
-bun install
-bun run dev      # .output/chrome-mv3-dev
-bun run build
-bun run zip
-bun run release  # version bump + tag
-```
+Know another tracker that works with the Steam profile URL trick? [Open a tracker request](https://github.com/percdotdev/trackeroo/issues/new?template=tracker-request.yml) with the site name and how the URL changes. No coding needed.
 
-## Contributing
+[Privacy policy](PRIVACY.md)
 
-Use the [tracker request issue](https://github.com/percdotdev/trackeroo/issues/new?template=tracker-request.yml) — name, URL trick, and an example URL. PRs to `src/trackers/catalog.ts` also welcome.
+## Developers
+
+Trackers live in `src/trackers/catalog.ts`. PRs welcome.
