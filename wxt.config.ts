@@ -7,6 +7,7 @@ export default defineConfig({
   manifest: {
     name: 'Trackeroo',
     description: 'Open CS2 stat trackers from Steam profiles',
+    permissions: ['storage'],
   },
   vite: () => ({
     plugins: [tailwindcss()],
