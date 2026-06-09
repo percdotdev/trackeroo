@@ -1,58 +1,37 @@
 import type { ReactNode } from "react";
-import { LanguagePicker } from "@/components/popup/LanguagePicker";
-import type { StoredLocale } from "@/i18n/locales";
+import { type PopupTab, PopupTabs } from "@/components/popup/PopupTabs";
 import { t } from "@/i18n/runtime";
-import { GITHUB_TRACKER_REQUEST_URL, GITHUB_URL } from "@/meta/links";
-
-const footerLinkClass =
-  "text-[13px] text-neutral-500 underline decoration-neutral-700 underline-offset-2 hover:text-white hover:decoration-neutral-500";
 
 interface PopupShellProps {
+  activeTab: PopupTab;
   children: ReactNode;
-  locale: StoredLocale;
-  onLocaleChange: (locale: StoredLocale) => void;
+  enabledCount: number;
+  onTabChange: (tab: PopupTab) => void;
+  totalCount: number;
 }
 
 export function PopupShell({
+  activeTab,
   children,
-  locale,
-  onLocaleChange,
+  enabledCount,
+  onTabChange,
+  totalCount,
 }: PopupShellProps) {
   return (
-    <div className="flex min-h-[400px] w-[300px] flex-col bg-black text-neutral-300 text-sm">
-      <header className="space-y-3 border-neutral-800 border-b px-5 py-4">
-        <div>
-          <h1 className="font-medium text-base text-white">{t("extName")}</h1>
-          <p className="mt-1 text-[13px] text-neutral-500 leading-snug">
-            {t("popupSubtitle")}
-          </p>
+    <div className="flex w-[280px] flex-col bg-black text-neutral-300 text-sm">
+      <header className="space-y-3 px-4 pt-4 pb-3">
+        <div className="flex items-center justify-between gap-3">
+          <h1 className="font-medium text-[15px] text-white">{t("extName")}</h1>
+          <span className="shrink-0 rounded-full bg-neutral-900 px-2 py-0.5 text-[11px] text-neutral-400 tabular-nums">
+            {enabledCount}/{totalCount}
+          </span>
         </div>
-        <LanguagePicker locale={locale} onChange={onLocaleChange} />
+        <PopupTabs active={activeTab} onChange={onTabChange} />
       </header>
 
-      <main className="flex-1 overflow-y-auto px-5 py-4">{children}</main>
-
-      <footer className="flex flex-wrap items-center gap-x-3 gap-y-1 border-neutral-800 border-t px-5 py-3">
-        <a
-          className={footerLinkClass}
-          href={GITHUB_URL}
-          rel="noreferrer"
-          target="_blank"
-        >
-          {t("openSource")}
-        </a>
-        <span aria-hidden="true" className="text-neutral-700">
-          ·
-        </span>
-        <a
-          className={footerLinkClass}
-          href={GITHUB_TRACKER_REQUEST_URL}
-          rel="noreferrer"
-          target="_blank"
-        >
-          {t("suggestSite")}
-        </a>
-      </footer>
+      <main className="max-h-[320px] overflow-y-auto px-4 pb-4">
+        {children}
+      </main>
     </div>
   );
 }

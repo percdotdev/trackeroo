@@ -7,7 +7,7 @@ interface LanguagePickerProps {
 }
 
 const selectClass =
-  "w-full rounded border border-neutral-700 bg-black px-2.5 py-1.5 text-[13px] text-white outline-none transition-colors hover:border-neutral-500 focus:border-neutral-500";
+  "w-full rounded-md border border-neutral-800 bg-neutral-900/50 px-2.5 py-2 text-[13px] text-white outline-none transition-colors hover:border-neutral-700 focus:border-neutral-600";
 
 export function LanguagePicker({ locale, onChange }: LanguagePickerProps) {
   return (

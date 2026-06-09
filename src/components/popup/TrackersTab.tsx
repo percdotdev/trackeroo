@@ -10,6 +10,9 @@ interface TrackersTabProps {
   preferences: TrackerPreferences;
 }
 
+const actionClass =
+  "text-[12px] text-neutral-500 transition-colors hover:text-white disabled:cursor-default disabled:text-neutral-700";
+
 export function TrackersTab({
   preferences,
   onToggle,
@@ -19,18 +22,21 @@ export function TrackersTab({
   const allOff = TRACKERS.every((tracker) => !preferences[tracker.id]);
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="grid grid-cols-2 gap-2">
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center justify-end gap-1 px-1">
         <button
-          className="rounded border border-neutral-700 px-3 py-2 text-[13px] text-white transition-colors hover:border-neutral-500 disabled:cursor-default disabled:border-neutral-800 disabled:text-neutral-600"
+          className={actionClass}
           disabled={allOn}
           onClick={() => onSetAll(true)}
           type="button"
         >
           {t("turnAllOn")}
         </button>
+        <span aria-hidden="true" className="text-neutral-800">
+          ·
+        </span>
         <button
-          className="rounded border border-neutral-700 px-3 py-2 text-[13px] text-white transition-colors hover:border-neutral-500 disabled:cursor-default disabled:border-neutral-800 disabled:text-neutral-600"
+          className={actionClass}
           disabled={allOff}
           onClick={() => onSetAll(false)}
           type="button"
@@ -39,11 +45,11 @@ export function TrackersTab({
         </button>
       </div>
 
-      <ul className="divide-y divide-neutral-800 border-neutral-800 border-y">
+      <ul className="flex flex-col gap-0.5">
         {TRACKERS.map((tracker) => (
           <li key={tracker.id}>
-            <div className="flex items-center justify-between gap-4 py-3.5">
-              <span className="text-[15px] text-white">
+            <div className="flex items-center justify-between gap-3 rounded-md px-2 py-2 transition-colors hover:bg-neutral-900/60">
+              <span className="truncate text-[13px] text-white">
                 {getTrackerHost(tracker)}
               </span>
               <Toggle
