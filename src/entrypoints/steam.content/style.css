@@ -57,6 +57,24 @@
   text-decoration: none;
 }
 
+.trackeroo-direct-link {
+  display: block;
+  text-decoration: none;
+}
+
+.trackeroo-direct-link:hover .count_link_label {
+  color: #fff;
+}
+
+.trackeroo-empty {
+  cursor: default;
+}
+
+.trackeroo-empty .count_link_label {
+  color: #56707f;
+  font-size: 12px;
+}
+
 .trackeroo-menu-item:focus-visible {
   outline: 1px solid #66c0f4;
   outline-offset: -1px;

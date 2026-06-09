@@ -1,17 +1,19 @@
 import type { ContentScriptContext } from '#imports';
 import { getEnabledTrackers } from '@/preferences/storage';
 import { getSteamProfileBaseUrl } from '@/steam/profile-url';
-import { mountDropdown } from './bind-dropdown';
 import { STEAM_SIDEBAR_ANCHOR, TRACKEROO_ROOT_ATTR } from './constants';
+import { mountTrackerUi } from './mount-ui';
 
 export function createTrackerDropdownController(ctx: ContentScriptContext) {
   let ui: ReturnType<typeof createIntegratedUi> | null = null;
   let mountedFor: string | null = null;
+  let mountedKey = '';
 
   const teardown = () => {
     ui?.remove();
     ui = null;
     mountedFor = null;
+    mountedKey = '';
   };
 
   const sync = async () => {
@@ -19,17 +21,23 @@ export function createTrackerDropdownController(ctx: ContentScriptContext) {
     const anchor = document.querySelector(STEAM_SIDEBAR_ANCHOR);
     const enabledTrackers = await getEnabledTrackers();
 
-    if (!baseUrl || !anchor || enabledTrackers.length === 0) {
+    if (!baseUrl || !anchor) {
       teardown();
       return;
     }
 
-    if (mountedFor === baseUrl && document.querySelector(`[${TRACKEROO_ROOT_ATTR}]`)) {
+    const trackerKey = enabledTrackers.map((tracker) => tracker.id).join(',');
+    if (
+      mountedFor === baseUrl
+      && mountedKey === trackerKey
+      && document.querySelector(`[${TRACKEROO_ROOT_ATTR}]`)
+    ) {
       return;
     }
 
     teardown();
     mountedFor = baseUrl;
+    mountedKey = trackerKey;
 
     ui = createIntegratedUi(ctx, {
       position: 'inline',
@@ -37,7 +45,7 @@ export function createTrackerDropdownController(ctx: ContentScriptContext) {
       append: 'first',
       onMount(container) {
         container.setAttribute(TRACKEROO_ROOT_ATTR, '');
-        mountDropdown(ctx, container, enabledTrackers, location.href);
+        mountTrackerUi(ctx, container, enabledTrackers, location.href);
       },
     });
 
@@ -46,6 +54,7 @@ export function createTrackerDropdownController(ctx: ContentScriptContext) {
 
   const invalidate = () => {
     mountedFor = null;
+    mountedKey = '';
   };
 
   return { sync, invalidate, teardown };

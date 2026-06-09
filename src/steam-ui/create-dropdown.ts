@@ -27,18 +27,42 @@ export function createDropdownMenu(
   return menu;
 }
 
-export function createDropdownTrigger(): HTMLDivElement {
+export function createDropdownTrigger(count: number): HTMLDivElement {
   const trigger = document.createElement('div');
   trigger.className = 'profile_count_link ellipsis trackeroo-trigger';
   trigger.setAttribute('role', 'button');
   trigger.setAttribute('tabindex', '0');
   trigger.setAttribute('aria-expanded', 'false');
   trigger.setAttribute('aria-haspopup', 'true');
+
+  const label = count > 0 ? `Trackers (${count})` : 'Trackers';
   trigger.innerHTML =
     '<a href="#" class="trackeroo-trigger-link" tabindex="-1">' +
-    '<span class="count_link_label">CS2 Trackers</span>&nbsp;' +
+    `<span class="count_link_label">${label}</span>&nbsp;` +
     '<span class="profile_count_link_total">▾</span>' +
     '</a>';
 
   return trigger;
+}
+
+export function createDirectLink(tracker: Tracker, pageUrl: string): HTMLAnchorElement | null {
+  const url = buildTrackerUrl(pageUrl, tracker);
+  if (!url) return null;
+
+  const link = document.createElement('a');
+  link.className = 'profile_count_link ellipsis trackeroo-direct-link';
+  link.href = url;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.innerHTML = `<span class="count_link_label">${tracker.label}</span>`;
+  return link;
+}
+
+export function createEmptyState(): HTMLDivElement {
+  const el = document.createElement('div');
+  el.className = 'profile_count_link ellipsis trackeroo-empty';
+  el.title = 'Open Trackeroo from your browser toolbar to enable sites';
+  el.innerHTML =
+    '<span class="count_link_label">No trackers enabled</span>';
+  return el;
 }
