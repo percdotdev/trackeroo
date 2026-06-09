@@ -1,6 +1,6 @@
 import { browser } from "wxt/browser";
 import type { LocaleId } from "./locales";
-import { getStoredLocale, resolveLocale } from "./preference";
+import { getStoredLocale } from "./preference";
 
 type MessageName = Parameters<typeof browser.i18n.getMessage>[0];
 
@@ -23,9 +23,9 @@ function applySubstitutions(
   }
 
   const values = Array.isArray(substitutions) ? substitutions : [substitutions];
-  return template.replace(/\$(\d+)\$/g, (_, token) => {
+  return template.replace(/\$(\d+)/g, (_, token) => {
     const index = Number(token) - 1;
-    return values[index] ?? `$${token}$`;
+    return values[index] ?? `$${token}`;
   });
 }
 
@@ -45,14 +45,13 @@ async function loadMessages(locale: LocaleId): Promise<Record<string, string>> {
 
 export async function initI18n(): Promise<void> {
   const stored = await getStoredLocale();
-  const resolved = resolveLocale(stored);
 
-  if (!resolved) {
+  if (stored === "system") {
     activeMessages = null;
     return;
   }
 
-  activeMessages = await loadMessages(resolved);
+  activeMessages = await loadMessages(stored);
 }
 
 export function t(
