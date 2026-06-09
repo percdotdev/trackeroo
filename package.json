@@ -17,6 +17,7 @@
     "zip:firefox": "wxt zip -b firefox",
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare",
+    "icons": "python scripts/generate-icon.py",
     "release": "bumpp"
   },
   "dependencies": {
