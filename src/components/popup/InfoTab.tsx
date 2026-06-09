@@ -1,34 +1,29 @@
-import { GITHUB_ISSUES_URL, GITHUB_URL } from '@/lib/constants';
+import { GITHUB_TRACKER_REQUEST_URL, GITHUB_URL } from '@/lib/constants';
 
 export function InfoTab() {
   return (
     <div className="space-y-3 text-[11px] leading-relaxed text-[#8f98a0]">
       <p>
-        Know or run a tracker site that fits the Steam profile URL trick?
-        I&apos;m happy to add it.
-      </p>
-      <p>
-        Open an{' '}
+        Missing a tracker?{' '}
         <a
-          href={GITHUB_ISSUES_URL}
+          href={GITHUB_TRACKER_REQUEST_URL}
           target="_blank"
           rel="noreferrer"
           className="text-[#66c0f4] hover:text-white"
         >
-          issue
+          Open a tracker request
         </a>{' '}
-        or send a{' '}
+        with the site name and URL trick. PRs to{' '}
         <a
           href={GITHUB_URL}
           target="_blank"
           rel="noreferrer"
           className="text-[#66c0f4] hover:text-white"
         >
-          PR
+          catalog.ts
         </a>{' '}
-        on GitHub — or just tell me.
+        welcome too.
       </p>
-      <p className="text-[#56707f]">Trackeroo is open source.</p>
     </div>
   );
 }
