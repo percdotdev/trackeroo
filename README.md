@@ -12,14 +12,7 @@ Until then, load the extension unpacked from a release zip (see [Releases](https
 
 ## Trackers
 
-- CSStats — matchmaking stats
-- CSRep — deep stat comparison
-- CSST — combined Faceit / Leetify / CSStats view
-- Luminary
-- Leetify
-- CS2 Tracker
-- Scope.gg — demo and aim analysis
-- CS2Scan — cheat / smurf signals
+[CSStats](https://csstats.gg) · [CSRep](https://csrep.gg) · [CSST](https://csst.at) · [Luminary](https://luminary.pw) · [Leetify](https://leetify.com) · [CS2 Tracker](https://cs2tracker.gg) · [Scope.gg](https://scope.gg) · [CS2Scan](https://cs2scan.com)
 
 Turn individual sites on or off from the extension icon (popup → Trackers).
 
