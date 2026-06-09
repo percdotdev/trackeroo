@@ -61,5 +61,14 @@
         "example": "csstats.gg"
       }
     }
+  },
+  "tabTrackers": {
+    "message": "Трекеры"
+  },
+  "tabSettings": {
+    "message": "Настройки"
+  },
+  "settingsLinks": {
+    "message": "Ссылки"
   }
 }
