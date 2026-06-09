@@ -1,6 +1,6 @@
 # Trackeroo
 
-Opens CS2 stat sites from Steam profile pages. On any profile, use the **CS2 Trackers** menu in the sidebar and pick where you want to go.
+Opens CS2 stat sites from Steam profile pages. On any profile, use the **Trackers** menu in the sidebar and pick where you want to go.
 
 Coming to the [Chrome Web Store](https://chromewebstore.google.com/) — review in progress.
 
@@ -12,7 +12,7 @@ Until then, load the extension unpacked from a release zip (see [Releases](https
 
 ## Trackers
 
-[CSStats](https://csstats.gg) · [CSRep](https://csrep.gg) · [CSST](https://csst.at) · [Luminary](https://luminary.pw) · [Leetify](https://leetify.com) · [CS2 Tracker](https://cs2tracker.gg) · [Scope.gg](https://scope.gg) · [CS2Scan](https://cs2scan.com)
+[CSStats](https://csstats.gg) · [CSRep](https://csrep.gg) · [CSST](https://csst.at) · [Luminary](https://luminary.pw) · [Leetify](https://leetify.com) · [CS2 Tracker](https://cs2tracker.gg) · [Scope.gg](https://scope.gg)
 
 Turn individual sites on or off from the extension icon (popup → Trackers).
 
