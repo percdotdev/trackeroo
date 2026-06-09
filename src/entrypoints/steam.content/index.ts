@@ -1,6 +1,5 @@
-import { STEAM_PROFILE_MATCHES } from "@/lib/constants";
-import { LOCALE_KEY } from "@/preferences/locale";
-import { SETTINGS_KEY } from "@/preferences/storage";
+import { LOCALE_KEY, SETTINGS_KEY } from "@/preferences/keys";
+import { STEAM_PROFILE_MATCHES } from "@/steam/matches";
 import { createTrackerDropdownController } from "@/steam-ui/controller";
 import "./style.css";
 
