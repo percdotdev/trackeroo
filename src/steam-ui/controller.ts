@@ -1,7 +1,7 @@
 import type { ContentScriptContext } from "#imports";
-import { initI18n } from "@/lib/i18n";
-import { getEnabledTrackers } from "@/preferences/storage";
+import { initI18n } from "@/i18n/runtime";
 import { getSteamProfileBaseUrl } from "@/steam/profile-url";
+import { getEnabledTrackers } from "@/trackers/enabled";
 import { STEAM_SIDEBAR_ANCHOR, TRACKEROO_ROOT_ATTR } from "./constants";
 import { mountTrackerUi } from "./mount-ui";
 

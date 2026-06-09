@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { initI18n } from "@/lib/i18n";
-import type { StoredLocale } from "@/lib/locales";
-import { getStoredLocale, setStoredLocale } from "@/preferences/locale";
+import type { StoredLocale } from "@/i18n/locales";
+import { getStoredLocale, setStoredLocale } from "@/i18n/preference";
+import { initI18n } from "@/i18n/runtime";
 
 export function useLocale() {
   const [ready, setReady] = useState(false);

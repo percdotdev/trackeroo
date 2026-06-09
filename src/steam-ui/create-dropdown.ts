@@ -1,4 +1,4 @@
-import { t } from "@/lib/i18n";
+import { t } from "@/i18n/runtime";
 import { buildTrackerUrl } from "@/trackers/build-url";
 import { getTrackerHost } from "@/trackers/catalog";
 import type { Tracker } from "@/trackers/types";

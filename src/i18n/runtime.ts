@@ -1,6 +1,6 @@
 import { browser } from "wxt/browser";
-import type { LocaleId } from "@/lib/locales";
-import { getStoredLocale, resolveLocale } from "@/preferences/locale";
+import type { LocaleId } from "./locales";
+import { getStoredLocale, resolveLocale } from "./preference";
 
 type MessageName = Parameters<typeof browser.i18n.getMessage>[0];
 

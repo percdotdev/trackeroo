@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { LanguagePicker } from "@/components/popup/LanguagePicker";
-import { GITHUB_TRACKER_REQUEST_URL, GITHUB_URL } from "@/lib/constants";
-import { t } from "@/lib/i18n";
-import type { StoredLocale } from "@/lib/locales";
+import type { StoredLocale } from "@/i18n/locales";
+import { t } from "@/i18n/runtime";
+import { GITHUB_TRACKER_REQUEST_URL, GITHUB_URL } from "@/meta/links";
 
 const footerLinkClass =
   "text-[13px] text-neutral-500 underline decoration-neutral-700 underline-offset-2 hover:text-white hover:decoration-neutral-500";

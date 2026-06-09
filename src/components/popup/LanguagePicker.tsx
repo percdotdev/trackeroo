@@ -1,5 +1,5 @@
-import { t } from "@/lib/i18n";
-import { type StoredLocale, SUPPORTED_LOCALES } from "@/lib/locales";
+import { type StoredLocale, SUPPORTED_LOCALES } from "@/i18n/locales";
+import { t } from "@/i18n/runtime";
 
 interface LanguagePickerProps {
   locale: StoredLocale;
