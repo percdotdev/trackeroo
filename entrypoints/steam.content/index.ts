@@ -131,7 +131,7 @@ export default defineContentScript({
     });
 
     browser.storage.onChanged.addListener((changes, area) => {
-      if (area === 'sync' && changes[SETTINGS_KEY]) {
+      if (area === 'local' && changes[SETTINGS_KEY]) {
         mountedFor = null;
         sync();
       }
