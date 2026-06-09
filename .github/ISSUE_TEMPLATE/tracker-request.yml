@@ -1,0 +1,34 @@
+name: Tracker request
+description: Suggest a CS2 stat tracker to add
+title: "[Tracker] "
+labels:
+  - tracker
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Tracker name
+      placeholder: Scope.gg
+    validations:
+      required: true
+  - type: input
+    id: site
+    attributes:
+      label: Site URL
+      placeholder: https://scope.gg
+  - type: textarea
+    id: trick
+    attributes:
+      label: URL trick
+      description: How to transform a steamcommunity.com profile URL
+      placeholder: Change .com to .org
+    validations:
+      required: true
+  - type: input
+    id: example
+    attributes:
+      label: Example
+      description: Transformed URL
+      placeholder: https://steamcommunity.org/id/player
+    validations:
+      required: true
