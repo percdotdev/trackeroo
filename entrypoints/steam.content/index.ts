@@ -1,4 +1,5 @@
-import { TRACKERS, buildTrackerUrl } from '@/utils/trackers';
+import { buildTrackerUrl } from '@/utils/trackers';
+import { getEnabledTrackers, SETTINGS_KEY } from '@/utils/settings';
 import { getSteamProfileBaseUrl } from '@/utils/steam-profile';
 import './style.css';
 
@@ -16,14 +17,19 @@ export default defineContentScript({
     let ui: ReturnType<typeof createIntegratedUi> | null = null;
     let mountedFor: string | null = null;
 
-    const sync = () => {
+    const teardown = () => {
+      ui?.remove();
+      ui = null;
+      mountedFor = null;
+    };
+
+    const sync = async () => {
       const baseUrl = getSteamProfileBaseUrl(location.href);
       const anchor = document.querySelector(ANCHOR);
+      const enabledTrackers = await getEnabledTrackers();
 
-      if (!baseUrl || !anchor) {
-        ui?.remove();
-        ui = null;
-        mountedFor = null;
+      if (!baseUrl || !anchor || enabledTrackers.length === 0) {
+        teardown();
         return;
       }
 
@@ -31,7 +37,7 @@ export default defineContentScript({
         return;
       }
 
-      ui?.remove();
+      teardown();
       mountedFor = baseUrl;
 
       ui = createIntegratedUi(ctx, {
@@ -59,7 +65,7 @@ export default defineContentScript({
           menu.setAttribute('role', 'menu');
           menu.hidden = true;
 
-          for (const tracker of TRACKERS) {
+          for (const tracker of enabledTrackers) {
             const url = buildTrackerUrl(location.href, tracker);
             if (!url) continue;
 
@@ -118,6 +124,17 @@ export default defineContentScript({
     };
 
     sync();
-    ctx.addEventListener(window, 'popstate', sync);
+
+    ctx.addEventListener(window, 'popstate', () => {
+      mountedFor = null;
+      sync();
+    });
+
+    browser.storage.onChanged.addListener((changes, area) => {
+      if (area === 'sync' && changes[SETTINGS_KEY]) {
+        mountedFor = null;
+        sync();
+      }
+    });
   },
 });
