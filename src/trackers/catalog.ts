@@ -1,24 +1,4 @@
-import { getSteamProfileBaseUrl } from './steam-profile';
-
-type HostTransform =
-  | { type: 'prefix'; value: string }
-  | { type: 'tld'; value: string };
-
-export type TrackerId =
-  | 'csstats'
-  | 'csrep'
-  | 'csst'
-  | 'luminary'
-  | 'leetify'
-  | 'cs2tracker';
-
-export type Tracker = {
-  id: TrackerId;
-  label: string;
-  transform: HostTransform;
-  manualHint: string;
-  manualExample: string;
-};
+import type { Tracker } from './types';
 
 export const TRACKERS: Tracker[] = [
   {
@@ -66,22 +46,3 @@ export const TRACKERS: Tracker[] = [
 ];
 
 export const TRACKER_IDS = TRACKERS.map((tracker) => tracker.id);
-
-function applyHostTransform(baseUrl: string, transform: HostTransform): string {
-  const url = new URL(baseUrl);
-
-  if (transform.type === 'prefix') {
-    url.hostname = `${transform.value}${url.hostname}`;
-  } else {
-    url.hostname = url.hostname.replace(/\.com$/, `.${transform.value}`);
-  }
-
-  return url.toString();
-}
-
-export function buildTrackerUrl(pageUrl: string, tracker: Tracker): string | null {
-  const baseUrl = getSteamProfileBaseUrl(pageUrl);
-  if (!baseUrl) return null;
-
-  return applyHostTransform(baseUrl, tracker.transform);
-}

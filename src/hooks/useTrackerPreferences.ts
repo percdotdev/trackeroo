@@ -1,0 +1,28 @@
+import { useEffect, useState } from 'react';
+import {
+  getDefaultPreferences,
+  getTrackerPreferences,
+  setTrackerPreference,
+} from '@/preferences/storage';
+import type { TrackerId } from '@/trackers/types';
+import type { TrackerPreferences } from '@/preferences/types';
+
+export function useTrackerPreferences() {
+  const [preferences, setPreferences] = useState<TrackerPreferences>(
+    getDefaultPreferences,
+  );
+
+  useEffect(() => {
+    getTrackerPreferences().then(setPreferences);
+  }, []);
+
+  const toggle = (id: TrackerId) => {
+    const enabled = !preferences[id];
+    setPreferences((current) => ({ ...current, [id]: enabled }));
+    setTrackerPreference(id, enabled).catch(() => {
+      setPreferences((current) => ({ ...current, [id]: !enabled }));
+    });
+  };
+
+  return { preferences, toggle };
+}

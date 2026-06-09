@@ -1,13 +1,9 @@
-import {
-  TRACKERS,
-  type Tracker,
-  type TrackerId,
-  TRACKER_IDS,
-} from './trackers';
+import { TRACKERS, TRACKER_IDS } from '@/trackers/catalog';
+import type { Tracker } from '@/trackers/types';
+import type { TrackerId } from '@/trackers/types';
+import type { TrackerPreferences } from './types';
 
 export const SETTINGS_KEY = 'trackerPreferences';
-
-export type TrackerPreferences = Record<TrackerId, boolean>;
 
 export function getDefaultPreferences(): TrackerPreferences {
   return Object.fromEntries(
@@ -57,4 +53,18 @@ export async function setTrackerPreference(
 export async function getEnabledTrackers(): Promise<Tracker[]> {
   const preferences = await getTrackerPreferences();
   return TRACKERS.filter((tracker) => preferences[tracker.id]);
+}
+
+export async function handleExtensionInstalled(reason: string): Promise<void> {
+  if (reason === 'install') {
+    await browser.storage.local.set({
+      [SETTINGS_KEY]: getDefaultPreferences(),
+    });
+    return;
+  }
+
+  if (reason === 'update') {
+    const preferences = await getTrackerPreferences();
+    await browser.storage.local.set({ [SETTINGS_KEY]: preferences });
+  }
 }
