@@ -1,6 +1,6 @@
-import { browser } from 'wxt/browser';
-import type { LocaleId } from '@/lib/locales';
-import { getStoredLocale, resolveLocale } from '@/preferences/locale';
+import { browser } from "wxt/browser";
+import type { LocaleId } from "@/lib/locales";
+import { getStoredLocale, resolveLocale } from "@/preferences/locale";
 
 type MessageName = Parameters<typeof browser.i18n.getMessage>[0];
 
@@ -16,9 +16,11 @@ let activeMessages: Record<string, string> | null = null;
 
 function applySubstitutions(
   template: string,
-  substitutions?: string | string[],
+  substitutions?: string | string[]
 ): string {
-  if (!substitutions) return template;
+  if (!substitutions) {
+    return template;
+  }
 
   const values = Array.isArray(substitutions) ? substitutions : [substitutions];
   return template.replace(/\$(\d+)\$/g, (_, token) => {
@@ -37,7 +39,7 @@ async function loadMessages(locale: LocaleId): Promise<Record<string, string>> {
 
   const raw = (await response.json()) as RawMessages;
   return Object.fromEntries(
-    Object.entries(raw).map(([key, entry]) => [key, entry.message]),
+    Object.entries(raw).map(([key, entry]) => [key, entry.message])
   );
 }
 
@@ -53,7 +55,10 @@ export async function initI18n(): Promise<void> {
   activeMessages = await loadMessages(resolved);
 }
 
-export function t(messageName: MessageName, substitutions?: string | string[]): string {
+export function t(
+  messageName: MessageName,
+  substitutions?: string | string[]
+): string {
   const override = activeMessages?.[messageName];
   if (override) {
     return applySubstitutions(override, substitutions);

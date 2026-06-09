@@ -14,6 +14,11 @@
   pointer-events: none;
 }
 
+.trackeroo-empty .count_link_label {
+  font-size: 12px;
+  color: #56707f;
+}
+
 .trackeroo-trigger:hover .count_link_label,
 .trackeroo-root.is-open .count_link_label {
   color: #fff;
@@ -21,12 +26,12 @@
 
 .trackeroo-menu {
   position: absolute;
-  left: 0;
-  right: 0;
   top: calc(100% + 2px);
+  right: 0;
+  left: 0;
   z-index: 500;
-  margin: 0;
   padding: 4px 0;
+  margin: 0;
   list-style: none;
   background: linear-gradient(to bottom, #3d4450 0%, #2d333b 100%);
   border: 1px solid #000;
@@ -41,20 +46,20 @@
 .trackeroo-menu-item {
   display: block;
   padding: 7px 12px;
-  color: #b8bcbf;
   font:
-    13px/16px 'Motiva Sans',
+    13px / 16px "Motiva Sans",
     Arial,
     Helvetica,
     sans-serif;
-  text-decoration: none;
+  color: #b8bcbf;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .trackeroo-menu-item:hover {
   color: #fff;
-  background: linear-gradient(to right, #417a9b 0%, #2a475e 100%);
   text-decoration: none;
+  background: linear-gradient(to right, #417a9b 0%, #2a475e 100%);
 }
 
 .trackeroo-direct-link {
@@ -68,11 +73,6 @@
 
 .trackeroo-empty {
   cursor: default;
-}
-
-.trackeroo-empty .count_link_label {
-  color: #56707f;
-  font-size: 12px;
 }
 
 .trackeroo-menu-item:focus-visible {

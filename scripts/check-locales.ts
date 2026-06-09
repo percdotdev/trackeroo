@@ -1,11 +1,11 @@
-import { readdir, readFile } from 'node:fs/promises';
-import { join } from 'node:path';
+import { readdir, readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-const LOCALES_DIR = 'public/_locales';
-const BASE_LOCALE = 'en';
+const LOCALES_DIR = "public/_locales";
+const BASE_LOCALE = "en";
 
 const baseMessages = JSON.parse(
-  await readFile(join(LOCALES_DIR, BASE_LOCALE, 'messages.json'), 'utf8'),
+  await readFile(join(LOCALES_DIR, BASE_LOCALE, "messages.json"), "utf8")
 ) as Record<string, unknown>;
 
 const baseKeys = new Set(Object.keys(baseMessages));
@@ -14,10 +14,12 @@ const locales = await readdir(LOCALES_DIR);
 let failed = false;
 
 for (const locale of locales.sort()) {
-  if (locale === BASE_LOCALE) continue;
+  if (locale === BASE_LOCALE) {
+    continue;
+  }
 
   const messages = JSON.parse(
-    await readFile(join(LOCALES_DIR, locale, 'messages.json'), 'utf8'),
+    await readFile(join(LOCALES_DIR, locale, "messages.json"), "utf8")
   ) as Record<string, unknown>;
 
   const keys = new Set(Object.keys(messages));

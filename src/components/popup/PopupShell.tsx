@@ -1,26 +1,30 @@
-import type { ReactNode } from 'react';
-import { LanguagePicker } from '@/components/popup/LanguagePicker';
-import { GITHUB_TRACKER_REQUEST_URL, GITHUB_URL } from '@/lib/constants';
-import { t } from '@/lib/i18n';
-import type { StoredLocale } from '@/lib/locales';
+import type { ReactNode } from "react";
+import { LanguagePicker } from "@/components/popup/LanguagePicker";
+import { GITHUB_TRACKER_REQUEST_URL, GITHUB_URL } from "@/lib/constants";
+import { t } from "@/lib/i18n";
+import type { StoredLocale } from "@/lib/locales";
 
 const footerLinkClass =
-  'text-[13px] text-neutral-500 underline decoration-neutral-700 underline-offset-2 hover:text-white hover:decoration-neutral-500';
+  "text-[13px] text-neutral-500 underline decoration-neutral-700 underline-offset-2 hover:text-white hover:decoration-neutral-500";
 
-type PopupShellProps = {
+interface PopupShellProps {
   children: ReactNode;
   locale: StoredLocale;
   onLocaleChange: (locale: StoredLocale) => void;
-};
+}
 
-export function PopupShell({ children, locale, onLocaleChange }: PopupShellProps) {
+export function PopupShell({
+  children,
+  locale,
+  onLocaleChange,
+}: PopupShellProps) {
   return (
-    <div className="flex min-h-[400px] w-[300px] flex-col bg-black text-sm text-neutral-300">
-      <header className="space-y-3 border-b border-neutral-800 px-5 py-4">
+    <div className="flex min-h-[400px] w-[300px] flex-col bg-black text-neutral-300 text-sm">
+      <header className="space-y-3 border-neutral-800 border-b px-5 py-4">
         <div>
-          <h1 className="text-base font-medium text-white">{t('extName')}</h1>
-          <p className="mt-1 text-[13px] leading-snug text-neutral-500">
-            {t('popupSubtitle')}
+          <h1 className="font-medium text-base text-white">{t("extName")}</h1>
+          <p className="mt-1 text-[13px] text-neutral-500 leading-snug">
+            {t("popupSubtitle")}
           </p>
         </div>
         <LanguagePicker locale={locale} onChange={onLocaleChange} />
@@ -28,25 +32,25 @@ export function PopupShell({ children, locale, onLocaleChange }: PopupShellProps
 
       <main className="flex-1 overflow-y-auto px-5 py-4">{children}</main>
 
-      <footer className="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-neutral-800 px-5 py-3">
+      <footer className="flex flex-wrap items-center gap-x-3 gap-y-1 border-neutral-800 border-t px-5 py-3">
         <a
-          href={GITHUB_URL}
-          target="_blank"
-          rel="noreferrer"
           className={footerLinkClass}
+          href={GITHUB_URL}
+          rel="noreferrer"
+          target="_blank"
         >
-          {t('openSource')}
+          {t("openSource")}
         </a>
-        <span className="text-neutral-700" aria-hidden="true">
+        <span aria-hidden="true" className="text-neutral-700">
           ·
         </span>
         <a
-          href={GITHUB_TRACKER_REQUEST_URL}
-          target="_blank"
-          rel="noreferrer"
           className={footerLinkClass}
+          href={GITHUB_TRACKER_REQUEST_URL}
+          rel="noreferrer"
+          target="_blank"
         >
-          {t('suggestSite')}
+          {t("suggestSite")}
         </a>
       </footer>
     </div>

@@ -1,20 +1,20 @@
-import type { ContentScriptContext } from '#imports';
-import { initI18n } from '@/lib/i18n';
-import { getEnabledTrackers } from '@/preferences/storage';
-import { getSteamProfileBaseUrl } from '@/steam/profile-url';
-import { STEAM_SIDEBAR_ANCHOR, TRACKEROO_ROOT_ATTR } from './constants';
-import { mountTrackerUi } from './mount-ui';
+import type { ContentScriptContext } from "#imports";
+import { initI18n } from "@/lib/i18n";
+import { getEnabledTrackers } from "@/preferences/storage";
+import { getSteamProfileBaseUrl } from "@/steam/profile-url";
+import { STEAM_SIDEBAR_ANCHOR, TRACKEROO_ROOT_ATTR } from "./constants";
+import { mountTrackerUi } from "./mount-ui";
 
 export function createTrackerDropdownController(ctx: ContentScriptContext) {
   let ui: ReturnType<typeof createIntegratedUi> | null = null;
   let mountedFor: string | null = null;
-  let mountedKey = '';
+  let mountedKey = "";
 
   const teardown = () => {
     ui?.remove();
     ui = null;
     mountedFor = null;
-    mountedKey = '';
+    mountedKey = "";
   };
 
   const sync = async () => {
@@ -24,16 +24,16 @@ export function createTrackerDropdownController(ctx: ContentScriptContext) {
     const anchor = document.querySelector(STEAM_SIDEBAR_ANCHOR);
     const enabledTrackers = await getEnabledTrackers();
 
-    if (!baseUrl || !anchor) {
+    if (!(baseUrl && anchor)) {
       teardown();
       return;
     }
 
-    const trackerKey = enabledTrackers.map((tracker) => tracker.id).join(',');
+    const trackerKey = enabledTrackers.map((tracker) => tracker.id).join(",");
     if (
-      mountedFor === baseUrl
-      && mountedKey === trackerKey
-      && document.querySelector(`[${TRACKEROO_ROOT_ATTR}]`)
+      mountedFor === baseUrl &&
+      mountedKey === trackerKey &&
+      document.querySelector(`[${TRACKEROO_ROOT_ATTR}]`)
     ) {
       return;
     }
@@ -43,11 +43,11 @@ export function createTrackerDropdownController(ctx: ContentScriptContext) {
     mountedKey = trackerKey;
 
     ui = createIntegratedUi(ctx, {
-      position: 'inline',
+      position: "inline",
       anchor: STEAM_SIDEBAR_ANCHOR,
-      append: 'first',
+      append: "first",
       onMount(container) {
-        container.setAttribute(TRACKEROO_ROOT_ATTR, '');
+        container.setAttribute(TRACKEROO_ROOT_ATTR, "");
         mountTrackerUi(ctx, container, enabledTrackers, location.href);
       },
     });
@@ -57,7 +57,7 @@ export function createTrackerDropdownController(ctx: ContentScriptContext) {
 
   const invalidate = () => {
     mountedFor = null;
-    mountedKey = '';
+    mountedKey = "";
   };
 
   return { sync, invalidate, teardown };

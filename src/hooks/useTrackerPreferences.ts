@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   getDefaultPreferences,
   getTrackerPreferences,
   setAllTrackerPreferences,
   setTrackerPreference,
-} from '@/preferences/storage';
-import type { TrackerId } from '@/trackers/types';
-import type { TrackerPreferences } from '@/preferences/types';
+} from "@/preferences/storage";
+import type { TrackerPreferences } from "@/preferences/types";
+import type { TrackerId } from "@/trackers/types";
 
 export function useTrackerPreferences() {
   const [preferences, setPreferences] = useState<TrackerPreferences>(
-    getDefaultPreferences,
+    getDefaultPreferences
   );
 
   useEffect(() => {
@@ -29,8 +29,8 @@ export function useTrackerPreferences() {
     const previous = preferences;
     setPreferences(
       Object.fromEntries(
-        Object.keys(preferences).map((id) => [id, enabled]),
-      ) as TrackerPreferences,
+        Object.keys(preferences).map((id) => [id, enabled])
+      ) as TrackerPreferences
     );
     setAllTrackerPreferences(enabled).catch(() => {
       setPreferences(previous);
