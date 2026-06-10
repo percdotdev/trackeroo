@@ -67,5 +67,36 @@
   },
   "settingsLinks": {
     "message": "Ссылки"
+  },
+  "enabledCountLabel": {
+    "message": "Включено трекеров: $1 из $2",
+    "placeholders": {
+      "enabled": {
+        "content": "$1",
+        "example": "3"
+      },
+      "total": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "allTrackersAlreadyEnabled": {
+    "message": "Все трекеры уже включены"
+  },
+  "allTrackersAlreadyDisabled": {
+    "message": "Все трекеры уже выключены"
+  },
+  "preferencesSaveError": {
+    "message": "Не удалось сохранить изменения. Повторите попытку."
+  },
+  "externalLinkLabel": {
+    "message": "$1 (откроется в новой вкладке)",
+    "placeholders": {
+      "label": {
+        "content": "$1",
+        "example": "Открытый код"
+      }
+    }
   }
 }

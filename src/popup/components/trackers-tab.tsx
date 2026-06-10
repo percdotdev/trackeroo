@@ -4,15 +4,17 @@ import type { TrackerId, TrackerPreferences } from "@/trackers/types";
 import { Toggle } from "./toggle";
 
 interface TrackersTabProps {
+  error: boolean;
   onSetAll: (enabled: boolean) => void;
   onToggle: (id: TrackerId) => void;
   preferences: TrackerPreferences;
 }
 
 const actionClass =
-  "text-[12px] text-neutral-500 transition-colors hover:text-white disabled:cursor-default disabled:text-neutral-700";
+  "rounded-sm text-[12px] text-neutral-500 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:cursor-default disabled:text-neutral-700";
 
 export function TrackersTab({
+  error,
   preferences,
   onToggle,
   onSetAll,
@@ -27,6 +29,7 @@ export function TrackersTab({
           className={actionClass}
           disabled={allOn}
           onClick={() => onSetAll(true)}
+          title={allOn ? t("allTrackersAlreadyEnabled") : undefined}
           type="button"
         >
           {t("turnAllOn")}
@@ -38,31 +41,38 @@ export function TrackersTab({
           className={actionClass}
           disabled={allOff}
           onClick={() => onSetAll(false)}
+          title={allOff ? t("allTrackersAlreadyDisabled") : undefined}
           type="button"
         >
           {t("turnAllOff")}
         </button>
       </div>
 
+      {error ? (
+        <p className="px-1 text-[12px] text-red-300" role="alert">
+          {t("preferencesSaveError")}
+        </p>
+      ) : null}
+
       <ul className="flex flex-col gap-0.5">
-        {TRACKERS.map((tracker) => (
-          <li key={tracker.id}>
-            <div className="flex items-center justify-between gap-3 rounded-md px-2 py-2 transition-colors hover:bg-neutral-900/60">
-              <span className="truncate text-[13px] text-white">
-                {getTrackerHost(tracker)}
-              </span>
+        {TRACKERS.map((tracker) => {
+          const host = getTrackerHost(tracker);
+
+          return (
+            <li key={tracker.id}>
               <Toggle
                 ariaLabel={
                   preferences[tracker.id]
-                    ? t("trackerEnabled", getTrackerHost(tracker))
-                    : t("trackerDisabled", getTrackerHost(tracker))
+                    ? t("trackerEnabled", host)
+                    : t("trackerDisabled", host)
                 }
                 checked={preferences[tracker.id]}
+                label={host}
                 onChange={() => onToggle(tracker.id)}
               />
-            </div>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

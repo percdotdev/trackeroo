@@ -20,6 +20,8 @@ export function mountTrackerUi(
   if (enabledTrackers.length === 1) {
     const link = createDirectLink(enabledTrackers[0], pageUrl);
     if (!link) {
+      container.className = "trackeroo-root trackeroo-root--empty";
+      container.append(createEmptyState());
       return;
     }
 

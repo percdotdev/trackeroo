@@ -67,5 +67,36 @@
   },
   "settingsLinks": {
     "message": "Links"
+  },
+  "enabledCountLabel": {
+    "message": "$1 de $2 rastreadores ativados",
+    "placeholders": {
+      "enabled": {
+        "content": "$1",
+        "example": "3"
+      },
+      "total": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "allTrackersAlreadyEnabled": {
+    "message": "Todos os rastreadores já estão ativados"
+  },
+  "allTrackersAlreadyDisabled": {
+    "message": "Todos os rastreadores já estão desativados"
+  },
+  "preferencesSaveError": {
+    "message": "Não foi possível salvar as alterações. Tente novamente."
+  },
+  "externalLinkLabel": {
+    "message": "$1 (abre em uma nova aba)",
+    "placeholders": {
+      "label": {
+        "content": "$1",
+        "example": "Código aberto"
+      }
+    }
   }
 }

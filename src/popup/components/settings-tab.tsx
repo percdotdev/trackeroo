@@ -12,6 +12,9 @@ const linkClass =
   "block rounded-md px-2 py-2 text-[13px] text-neutral-400 transition-colors hover:bg-neutral-900 hover:text-white";
 
 export function SettingsTab({ locale, onLocaleChange }: SettingsTabProps) {
+  const openSourceLabel = t("externalLinkLabel", t("openSource"));
+  const suggestSiteLabel = t("externalLinkLabel", t("suggestSite"));
+
   return (
     <div className="flex flex-col gap-5">
       <LanguagePicker locale={locale} onChange={onLocaleChange} />
@@ -21,6 +24,7 @@ export function SettingsTab({ locale, onLocaleChange }: SettingsTabProps) {
           {t("settingsLinks")}
         </p>
         <a
+          aria-label={openSourceLabel}
           className={linkClass}
           href={GITHUB_URL}
           rel="noreferrer"
@@ -29,6 +33,7 @@ export function SettingsTab({ locale, onLocaleChange }: SettingsTabProps) {
           {t("openSource")}
         </a>
         <a
+          aria-label={suggestSiteLabel}
           className={linkClass}
           href={GITHUB_TRACKER_REQUEST_URL}
           rel="noreferrer"
