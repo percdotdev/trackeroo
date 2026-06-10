@@ -3,6 +3,22 @@ import { buildTrackerUrl } from "@/trackers/build-url";
 import { getTrackerHost } from "@/trackers/catalog";
 import type { Tracker } from "@/trackers/types";
 
+function createCountLabel(text: string): HTMLSpanElement {
+  const label = document.createElement("span");
+  label.className = "count_link_label";
+  label.textContent = text;
+  return label;
+}
+
+function createTrackerAnchor(tracker: Tracker, url: string): HTMLAnchorElement {
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.target = "_blank";
+  anchor.rel = "noopener noreferrer";
+  anchor.textContent = getTrackerHost(tracker);
+  return anchor;
+}
+
 export function createDropdownMenu(
   enabledTrackers: Tracker[],
   pageUrl: string
@@ -18,13 +34,9 @@ export function createDropdownMenu(
       continue;
     }
 
-    const item = document.createElement("a");
+    const item = createTrackerAnchor(tracker, url);
     item.className = "trackeroo-menu-item";
-    item.href = url;
-    item.target = "_blank";
-    item.rel = "noopener noreferrer";
     item.setAttribute("role", "menuitem");
-    item.textContent = getTrackerHost(tracker);
     menu.append(item);
   }
 
@@ -39,13 +51,19 @@ export function createDropdownTrigger(count: number): HTMLDivElement {
   trigger.setAttribute("aria-expanded", "false");
   trigger.setAttribute("aria-haspopup", "true");
 
+  const link = document.createElement("a");
+  link.href = "#";
+  link.className = "trackeroo-trigger-link";
+  link.tabIndex = -1;
+
   const label =
     count > 0 ? t("trackersWithCount", String(count)) : t("trackers");
-  trigger.innerHTML =
-    '<a href="#" class="trackeroo-trigger-link" tabindex="-1">' +
-    `<span class="count_link_label">${label}</span>&nbsp;` +
-    '<span class="profile_count_link_total">▾</span>' +
-    "</a>";
+  const caret = document.createElement("span");
+  caret.className = "profile_count_link_total";
+  caret.textContent = "▾";
+
+  link.append(createCountLabel(label), "\u00a0", caret);
+  trigger.append(link);
 
   return trigger;
 }
@@ -59,12 +77,9 @@ export function createDirectLink(
     return null;
   }
 
-  const link = document.createElement("a");
+  const link = createTrackerAnchor(tracker, url);
   link.className = "profile_count_link ellipsis trackeroo-direct-link";
-  link.href = url;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  link.innerHTML = `<span class="count_link_label">${getTrackerHost(tracker)}</span>`;
+  link.replaceChildren(createCountLabel(getTrackerHost(tracker)));
   return link;
 }
 
@@ -72,6 +87,6 @@ export function createEmptyState(): HTMLDivElement {
   const el = document.createElement("div");
   el.className = "profile_count_link ellipsis trackeroo-empty";
   el.title = t("emptyStateTitle");
-  el.innerHTML = `<span class="count_link_label">${t("noTrackersEnabled")}</span>`;
+  el.append(createCountLabel(t("noTrackersEnabled")));
   return el;
 }

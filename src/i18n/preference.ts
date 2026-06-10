@@ -1,8 +1,9 @@
-import { LOCALE_KEY } from "@/preferences/keys";
-import type { LocaleId, StoredLocale } from "./locales";
-import { isLocaleId, LOCALE_IDS } from "./locales";
+import type { StoredLocale } from "./locales";
+import { isLocaleId } from "./locales";
 
-function normalizeStoredLocale(value: unknown): StoredLocale {
+export const LOCALE_KEY = "locale";
+
+export function normalizeStoredLocale(value: unknown): StoredLocale {
   if (value === "system") {
     return "system";
   }
@@ -24,23 +25,4 @@ export async function getStoredLocale(): Promise<StoredLocale> {
 
 export async function setStoredLocale(locale: StoredLocale): Promise<void> {
   await browser.storage.local.set({ [LOCALE_KEY]: locale });
-}
-
-export function resolveLocale(stored: StoredLocale): LocaleId | null {
-  if (stored !== "system") {
-    return stored;
-  }
-
-  const uiLocale = browser.i18n.getMessage("@@ui_locale").replace("-", "_");
-  if (isLocaleId(uiLocale)) {
-    return uiLocale;
-  }
-
-  const base = uiLocale.split("_")[0];
-  if (base && isLocaleId(base)) {
-    return base;
-  }
-
-  const match = LOCALE_IDS.find((id) => id.startsWith(`${base}_`));
-  return match ?? null;
 }

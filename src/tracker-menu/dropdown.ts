@@ -1,6 +1,6 @@
 import type { ContentScriptContext } from "#imports";
 import type { Tracker } from "@/trackers/types";
-import { createDropdownMenu, createDropdownTrigger } from "./create-dropdown";
+import { createDropdownMenu, createDropdownTrigger } from "./elements";
 
 interface DropdownControls {
   close: () => void;

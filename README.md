@@ -24,4 +24,15 @@ Know another tracker that works with the Steam profile URL trick? [Open a tracke
 
 ## Developers
 
-Trackers live in `src/trackers/catalog.ts`. PRs welcome.
+The source layout follows the features of the extension:
+
+- `src/trackers/` — tracker catalog, URL building, and preferences. New trackers go in `src/trackers/catalog.ts`.
+- `src/tracker-menu/` — the menu injected into Steam profile sidebars.
+- `src/popup/` — the toolbar popup (React).
+- `src/steam/` — Steam profile URL parsing and match patterns.
+- `src/i18n/` — supported locales and runtime translations.
+- `src/entrypoints/` — thin WXT wiring for the background, content script, and popup.
+
+Common commands: `bun run dev` (live reload), `bun run test` (Vitest), `bun run check` (lint), `bun run compile` (typecheck).
+
+PRs welcome.

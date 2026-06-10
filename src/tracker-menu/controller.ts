@@ -1,12 +1,12 @@
 import type { ContentScriptContext } from "#imports";
 import { initI18n } from "@/i18n/runtime";
 import { getSteamProfileBaseUrl } from "@/steam/profile-url";
-import { getEnabledTrackers } from "@/trackers/enabled";
+import { getEnabledTrackers } from "@/trackers/preferences";
 import { resolveSidebarAnchor } from "./anchors";
 import { TRACKEROO_ROOT_ATTR } from "./constants";
-import { mountTrackerUi } from "./mount-ui";
+import { mountTrackerUi } from "./mount";
 
-export function createTrackerDropdownController(ctx: ContentScriptContext) {
+export function createTrackerMenuController(ctx: ContentScriptContext) {
   let ui: ReturnType<typeof createIntegratedUi> | null = null;
   let mountedFor: string | null = null;
   let mountedKey = "";

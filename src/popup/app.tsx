@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { PopupShell } from "@/components/popup/PopupShell";
-import type { PopupTab } from "@/components/popup/PopupTabs";
-import { SettingsTab } from "@/components/popup/SettingsTab";
-import { TrackersTab } from "@/components/popup/TrackersTab";
-import { useLocale } from "@/hooks/useLocale";
-import { useTrackerPreferences } from "@/hooks/useTrackerPreferences";
+import { useLocale } from "@/i18n/use-locale";
 import { TRACKERS } from "@/trackers/catalog";
+import { useTrackerPreferences } from "@/trackers/use-tracker-preferences";
+import { PopupShell } from "./components/popup-shell";
+import type { PopupTab } from "./components/popup-tabs";
+import { SettingsTab } from "./components/settings-tab";
+import { TrackersTab } from "./components/trackers-tab";
 
-function App() {
+export function PopupApp() {
   const { ready, locale, setLocale } = useLocale();
   const { preferences, toggle, setAll } = useTrackerPreferences();
   const [activeTab, setActiveTab] = useState<PopupTab>("trackers");
@@ -39,5 +39,3 @@ function App() {
     </PopupShell>
   );
 }
-
-export default App;

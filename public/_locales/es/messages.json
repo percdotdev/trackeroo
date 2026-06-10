@@ -5,9 +5,6 @@
   "extDescription": {
     "message": "Abre rastreadores de estadísticas de CS2 desde perfiles de Steam"
   },
-  "popupSubtitle": {
-    "message": "Elige qué sitios de estadísticas aparecen en los perfiles de Steam."
-  },
   "openSource": {
     "message": "Código abierto"
   },

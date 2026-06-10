@@ -1,6 +1,8 @@
-import { LOCALE_KEY, SETTINGS_KEY } from "@/preferences/keys";
+import type { Browser } from "wxt/browser";
+import { LOCALE_KEY } from "@/i18n/preference";
 import { STEAM_PROFILE_MATCHES } from "@/steam/matches";
-import { createTrackerDropdownController } from "@/steam-ui/controller";
+import { createTrackerMenuController } from "@/tracker-menu/controller";
+import { TRACKER_PREFERENCES_KEY } from "@/trackers/preferences";
 import "./style.css";
 
 export default defineContentScript({
@@ -8,23 +10,31 @@ export default defineContentScript({
   runAt: "document_idle",
 
   main(ctx) {
-    const dropdown = createTrackerDropdownController(ctx);
+    const menu = createTrackerMenuController(ctx);
 
-    dropdown.sync();
+    menu.sync();
 
     ctx.addEventListener(window, "popstate", () => {
-      dropdown.invalidate();
-      dropdown.sync();
+      menu.invalidate();
+      menu.sync();
     });
 
-    browser.storage.onChanged.addListener((changes, area) => {
+    const onStorageChanged = (
+      changes: Record<string, Browser.storage.StorageChange>,
+      area: string
+    ) => {
       if (area !== "local") {
         return;
       }
-      if (changes[SETTINGS_KEY] || changes[LOCALE_KEY]) {
-        dropdown.invalidate();
-        dropdown.sync();
+      if (changes[TRACKER_PREFERENCES_KEY] || changes[LOCALE_KEY]) {
+        menu.invalidate();
+        menu.sync();
       }
+    };
+
+    browser.storage.onChanged.addListener(onStorageChanged);
+    ctx.onInvalidated(() => {
+      browser.storage.onChanged.removeListener(onStorageChanged);
     });
   },
 });

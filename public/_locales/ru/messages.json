@@ -5,9 +5,6 @@
   "extDescription": {
     "message": "Открывайте CS2-трекеры статистики со страниц профилей Steam"
   },
-  "popupSubtitle": {
-    "message": "Выберите, какие сайты статистики показывать в профилях Steam."
-  },
   "openSource": {
     "message": "Открытый код"
   },
