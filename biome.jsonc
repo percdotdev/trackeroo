@@ -8,17 +8,5 @@
       "defineBackground",
       "defineContentScript"
     ]
-  },
-  "overrides": [
-    {
-      "includes": ["src/**"],
-      "linter": {
-        "rules": {
-          "style": {
-            "useFilenamingConvention": "off"
-          }
-        }
-      }
-    }
-  ]
+  }
 }

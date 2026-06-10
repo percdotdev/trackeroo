@@ -1,8 +1,7 @@
-import { Toggle } from "@/components/popup/Toggle";
 import { t } from "@/i18n/runtime";
-import type { TrackerPreferences } from "@/preferences/types";
 import { getTrackerHost, TRACKERS } from "@/trackers/catalog";
-import type { TrackerId } from "@/trackers/types";
+import type { TrackerId, TrackerPreferences } from "@/trackers/types";
+import { Toggle } from "./toggle";
 
 interface TrackersTabProps {
   onSetAll: (enabled: boolean) => void;

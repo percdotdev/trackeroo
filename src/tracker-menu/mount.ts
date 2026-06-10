@@ -1,7 +1,7 @@
 import type { ContentScriptContext } from "#imports";
 import type { Tracker } from "@/trackers/types";
-import { createDirectLink, createEmptyState } from "./create-dropdown";
-import { mountDropdown } from "./mount-dropdown";
+import { mountDropdown } from "./dropdown";
+import { createDirectLink, createEmptyState } from "./elements";
 
 export function mountTrackerUi(
   ctx: ContentScriptContext,

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { type PopupTab, PopupTabs } from "@/components/popup/PopupTabs";
 import { t } from "@/i18n/runtime";
+import { type PopupTab, PopupTabs } from "./popup-tabs";
 
 interface PopupShellProps {
   activeTab: PopupTab;

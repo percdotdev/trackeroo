@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+import { PopupApp } from "@/popup/app";
 import "@/assets/tailwind.css";
 
 document.documentElement.classList.add("bg-black");
@@ -13,6 +13,6 @@ if (!root) {
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <App />
+    <PopupApp />
   </React.StrictMode>
 );

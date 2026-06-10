@@ -16,3 +16,5 @@ export interface Tracker {
   id: TrackerId;
   transform: HostTransform;
 }
+
+export type TrackerPreferences = Record<TrackerId, boolean>;

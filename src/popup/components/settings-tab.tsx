@@ -1,7 +1,7 @@
-import { LanguagePicker } from "@/components/popup/LanguagePicker";
 import type { StoredLocale } from "@/i18n/locales";
 import { t } from "@/i18n/runtime";
 import { GITHUB_TRACKER_REQUEST_URL, GITHUB_URL } from "@/meta/links";
+import { LanguagePicker } from "./language-picker";
 
 interface SettingsTabProps {
   locale: StoredLocale;

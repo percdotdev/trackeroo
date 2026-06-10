@@ -1,8 +1,9 @@
-import { LOCALE_KEY } from "@/preferences/keys";
 import type { LocaleId, StoredLocale } from "./locales";
 import { isLocaleId, LOCALE_IDS } from "./locales";
 
-function normalizeStoredLocale(value: unknown): StoredLocale {
+export const LOCALE_KEY = "locale";
+
+export function normalizeStoredLocale(value: unknown): StoredLocale {
   if (value === "system") {
     return "system";
   }

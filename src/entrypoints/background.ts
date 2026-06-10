@@ -1,7 +1,16 @@
-import { handleExtensionInstalled } from "@/preferences/storage";
+import {
+  normalizeStoredPreferences,
+  seedDefaultPreferences,
+} from "@/trackers/preferences";
 
 export default defineBackground(() => {
   browser.runtime.onInstalled.addListener(({ reason }) => {
-    handleExtensionInstalled(reason);
+    if (reason === "install") {
+      seedDefaultPreferences();
+      return;
+    }
+    if (reason === "update") {
+      normalizeStoredPreferences();
+    }
   });
 });

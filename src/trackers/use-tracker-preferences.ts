@@ -4,9 +4,8 @@ import {
   getTrackerPreferences,
   setAllTrackerPreferences,
   setTrackerPreference,
-} from "@/preferences/storage";
-import type { TrackerPreferences } from "@/preferences/types";
-import type { TrackerId } from "@/trackers/types";
+} from "./preferences";
+import type { TrackerId, TrackerPreferences } from "./types";
 
 export function useTrackerPreferences() {
   const [preferences, setPreferences] = useState<TrackerPreferences>(
