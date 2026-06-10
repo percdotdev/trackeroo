@@ -1,3 +1,4 @@
+import type { Browser } from "wxt/browser";
 import { LOCALE_KEY } from "@/i18n/preference";
 import { STEAM_PROFILE_MATCHES } from "@/steam/matches";
 import { createTrackerMenuController } from "@/tracker-menu/controller";
@@ -18,7 +19,10 @@ export default defineContentScript({
       menu.sync();
     });
 
-    browser.storage.onChanged.addListener((changes, area) => {
+    const onStorageChanged = (
+      changes: Record<string, Browser.storage.StorageChange>,
+      area: string
+    ) => {
       if (area !== "local") {
         return;
       }
@@ -26,6 +30,11 @@ export default defineContentScript({
         menu.invalidate();
         menu.sync();
       }
+    };
+
+    browser.storage.onChanged.addListener(onStorageChanged);
+    ctx.onInvalidated(() => {
+      browser.storage.onChanged.removeListener(onStorageChanged);
     });
   },
 });
