@@ -5,9 +5,6 @@
   "extDescription": {
     "message": "从 Steam 个人资料打开 CS2 战绩追踪网站"
   },
-  "popupSubtitle": {
-    "message": "选择在 Steam 个人资料中显示哪些战绩网站。"
-  },
   "openSource": {
     "message": "开源"
   },

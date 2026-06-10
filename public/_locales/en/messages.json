@@ -5,9 +5,6 @@
   "extDescription": {
     "message": "Open CS2 stat trackers from Steam profiles"
   },
-  "popupSubtitle": {
-    "message": "Choose which stat sites appear on Steam profiles."
-  },
   "openSource": {
     "message": "Open source"
   },

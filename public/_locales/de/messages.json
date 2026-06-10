@@ -5,9 +5,6 @@
   "extDescription": {
     "message": "CS2-Statistik-Tracker von Steam-Profilen öffnen"
   },
-  "popupSubtitle": {
-    "message": "Wähle, welche Statistik-Seiten auf Steam-Profilen erscheinen."
-  },
   "openSource": {
     "message": "Open Source"
   },
