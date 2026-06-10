@@ -35,7 +35,7 @@ export function PopupShell({
             <h1 className="font-medium text-[15px] text-white">
               {t("extName")}
             </h1>
-            <p className="truncate text-[12px] text-neutral-500">
+            <p className="text-[12px] text-neutral-500 leading-4">
               {t("extDescription")}
             </p>
           </div>
