@@ -67,5 +67,36 @@
   },
   "settingsLinks": {
     "message": "Liens"
+  },
+  "enabledCountLabel": {
+    "message": "$1 tracker(s) activé(s) sur $2",
+    "placeholders": {
+      "enabled": {
+        "content": "$1",
+        "example": "3"
+      },
+      "total": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "allTrackersAlreadyEnabled": {
+    "message": "Tous les trackers sont déjà activés"
+  },
+  "allTrackersAlreadyDisabled": {
+    "message": "Tous les trackers sont déjà désactivés"
+  },
+  "preferencesSaveError": {
+    "message": "Impossible d'enregistrer les modifications. Réessayez."
+  },
+  "externalLinkLabel": {
+    "message": "$1 (s'ouvre dans un nouvel onglet)",
+    "placeholders": {
+      "label": {
+        "content": "$1",
+        "example": "Open source"
+      }
+    }
   }
 }

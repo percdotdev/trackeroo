@@ -11,6 +11,7 @@ export function useTrackerPreferences() {
   const [preferences, setPreferences] = useState<TrackerPreferences>(
     getDefaultPreferences
   );
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     getTrackerPreferences().then(setPreferences);
@@ -18,14 +19,17 @@ export function useTrackerPreferences() {
 
   const toggle = (id: TrackerId) => {
     const enabled = !preferences[id];
+    setError(false);
     setPreferences((current) => ({ ...current, [id]: enabled }));
     setTrackerPreference(id, enabled).catch(() => {
       setPreferences((current) => ({ ...current, [id]: !enabled }));
+      setError(true);
     });
   };
 
   const setAll = (enabled: boolean) => {
     const previous = preferences;
+    setError(false);
     setPreferences(
       Object.fromEntries(
         Object.keys(preferences).map((id) => [id, enabled])
@@ -33,8 +37,9 @@ export function useTrackerPreferences() {
     );
     setAllTrackerPreferences(enabled).catch(() => {
       setPreferences(previous);
+      setError(true);
     });
   };
 
-  return { preferences, toggle, setAll };
+  return { error, preferences, toggle, setAll };
 }

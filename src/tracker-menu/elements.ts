@@ -46,6 +46,9 @@ export function createDropdownMenu(
 export function createDropdownTrigger(count: number): HTMLDivElement {
   const trigger = document.createElement("div");
   trigger.className = "profile_count_link ellipsis trackeroo-trigger";
+  const label =
+    count > 0 ? t("trackersWithCount", String(count)) : t("trackers");
+  trigger.setAttribute("aria-label", label);
   trigger.setAttribute("role", "button");
   trigger.setAttribute("tabindex", "0");
   trigger.setAttribute("aria-expanded", "false");
@@ -56,10 +59,9 @@ export function createDropdownTrigger(count: number): HTMLDivElement {
   link.className = "trackeroo-trigger-link";
   link.tabIndex = -1;
 
-  const label =
-    count > 0 ? t("trackersWithCount", String(count)) : t("trackers");
   const caret = document.createElement("span");
   caret.className = "profile_count_link_total";
+  caret.setAttribute("aria-hidden", "true");
   caret.textContent = "▾";
 
   link.append(createCountLabel(label), "\u00a0", caret);
@@ -87,6 +89,9 @@ export function createEmptyState(): HTMLDivElement {
   const el = document.createElement("div");
   el.className = "profile_count_link ellipsis trackeroo-empty";
   el.title = t("emptyStateTitle");
-  el.append(createCountLabel(t("noTrackersEnabled")));
+  const help = document.createElement("span");
+  help.className = "trackeroo-empty-help";
+  help.textContent = t("emptyStateTitle");
+  el.append(createCountLabel(t("noTrackersEnabled")), help);
   return el;
 }

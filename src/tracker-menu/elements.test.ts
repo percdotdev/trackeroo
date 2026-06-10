@@ -60,11 +60,17 @@ describe("createDropdownTrigger", () => {
     const trigger = createDropdownTrigger(2);
 
     expect(trigger.getAttribute("role")).toBe("button");
+    expect(trigger.getAttribute("aria-label")).toBe("trackersWithCount:2");
     expect(trigger.getAttribute("aria-haspopup")).toBe("true");
     expect(trigger.getAttribute("aria-expanded")).toBe("false");
     expect(trigger.querySelector(".count_link_label")?.textContent).toBe(
       "trackersWithCount:2"
     );
+    expect(
+      trigger
+        .querySelector(".profile_count_link_total")
+        ?.getAttribute("aria-hidden")
+    ).toBe("true");
   });
 
   it("omits the count when no trackers are enabled", () => {
@@ -97,6 +103,9 @@ describe("createEmptyState", () => {
     expect(empty.title).toBe("emptyStateTitle");
     expect(empty.querySelector(".count_link_label")?.textContent).toBe(
       "noTrackersEnabled"
+    );
+    expect(empty.querySelector(".trackeroo-empty-help")?.textContent).toBe(
+      "emptyStateTitle"
     );
   });
 });

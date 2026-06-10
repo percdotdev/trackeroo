@@ -33,10 +33,13 @@ const ctx = {
   },
 } as unknown as ContentScriptContext;
 
-function mount(enabledTrackers: Tracker[]): HTMLElement {
+function mount(
+  enabledTrackers: Tracker[],
+  pageUrl: string = PROFILE_URL
+): HTMLElement {
   const container = document.createElement("div");
   document.body.append(container);
-  mountTrackerUi(ctx, container, enabledTrackers, PROFILE_URL);
+  mountTrackerUi(ctx, container, enabledTrackers, pageUrl);
   return container;
 }
 
@@ -60,6 +63,13 @@ describe("mountTrackerUi", () => {
     );
     expect(container.className).toContain("trackeroo-root--direct");
     expect(link?.href).toBe("https://xsteamcommunity.com/id/gaben");
+  });
+
+  it("shows the empty state when a single enabled tracker cannot link", () => {
+    const container = mount([trackers[0]], "https://example.com");
+
+    expect(container.className).toContain("trackeroo-root--empty");
+    expect(container.querySelector(".trackeroo-empty")).not.toBeNull();
   });
 
   it("renders a dropdown for multiple enabled trackers", () => {

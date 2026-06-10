@@ -67,5 +67,36 @@
   },
   "settingsLinks": {
     "message": "链接"
+  },
+  "enabledCountLabel": {
+    "message": "已启用 $1 / $2 个追踪器",
+    "placeholders": {
+      "enabled": {
+        "content": "$1",
+        "example": "3"
+      },
+      "total": {
+        "content": "$2",
+        "example": "7"
+      }
+    }
+  },
+  "allTrackersAlreadyEnabled": {
+    "message": "所有追踪器都已启用"
+  },
+  "allTrackersAlreadyDisabled": {
+    "message": "所有追踪器都已禁用"
+  },
+  "preferencesSaveError": {
+    "message": "无法保存更改。请重试。"
+  },
+  "externalLinkLabel": {
+    "message": "$1（在新标签页中打开）",
+    "placeholders": {
+      "label": {
+        "content": "$1",
+        "example": "开源"
+      }
+    }
   }
 }
