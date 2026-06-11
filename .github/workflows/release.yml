@@ -19,11 +19,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: actions/checkout@latest
         with:
           fetch-depth: 0
 
-      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+      - uses: oven-sh/setup-bun@latest
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -42,12 +42,12 @@ jobs:
 
       - name: Generate changelog
         if: startsWith(github.ref, 'refs/tags/')
-        run: bunx changelogithub@14.0.0
+        run: bunx changelogithub@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload release artifact
-        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
+        uses: softprops/action-gh-release@latest
         with:
           files: .output/*-chrome.zip
           generate_release_notes: ${{ github.event_name == 'workflow_dispatch' }}
