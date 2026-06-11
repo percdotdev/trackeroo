@@ -2,13 +2,13 @@
 
 Opens CS2 stat sites from Steam profile pages. On any profile, use the **Trackers** menu in the sidebar and pick where you want to go.
 
-Coming to the [Chrome Web Store](https://chromewebstore.google.com/) — review in progress.
+Live on the [Chrome Web Store](https://chromewebstore.google.com/detail/trackeroo/lpfonmobeihcnogioihjlnhhiblimkjp) — the store build may trail the latest release while an update is in review.
 
 ## Install
 
-Once approved, install from the Chrome Web Store. Works in Chrome, Brave, Edge, and the Steam in-game browser.
+Install from the [Chrome Web Store](https://chromewebstore.google.com/detail/trackeroo/lpfonmobeihcnogioihjlnhhiblimkjp). Works in Chrome, Brave, Edge, and the Steam in-game browser.
 
-Until then, load the extension unpacked from a release zip (see [Releases](https://github.com/percdotdev/trackeroo/releases)).
+To run the latest build before it's published, load unpacked from a release zip (see [Releases](https://github.com/percdotdev/trackeroo/releases)).
 
 ## Trackers
 
