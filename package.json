@@ -19,15 +19,20 @@
     "dev:firefox": "wxt -b firefox",
     "fix": "ultracite fix",
     "icons": "bun scripts/generate-icon.ts",
-    "store-assets": "bun scripts/generate-store-assets.ts",
     "postinstall": "wxt prepare",
     "json:sort": "bun run scripts/json-sort.ts",
     "prepare": "husky",
     "release": "bumpp",
+    "store-assets": "bun scripts/generate-store-assets.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox"
+  },
+  "overrides": {
+    "shell-quote": "^1.8.4",
+    "tmp": "^0.2.7",
+    "uuid": "^11.1.1"
   },
   "dependencies": {
     "react": "^19.2.4",

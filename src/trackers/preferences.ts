@@ -22,11 +22,14 @@ export function getDefaultPreferences(): TrackerPreferences {
 function normalizePreferences(stored: unknown): TrackerPreferences {
   const source =
     stored && typeof stored === "object"
-      ? (stored as Partial<TrackerPreferences>)
+      ? (stored as Record<string, unknown>)
       : {};
 
   return Object.fromEntries(
-    TRACKER_IDS.map((id) => [id, source[id] ?? true])
+    TRACKER_IDS.map((id) => {
+      const value = source[id];
+      return [id, typeof value === "boolean" ? value : true];
+    })
   ) as TrackerPreferences;
 }
 
