@@ -36,9 +36,33 @@ describe("parseSteamProfilePath", () => {
     );
   });
 
+  it("accepts vanity ids with underscores and hyphens", () => {
+    expect(
+      parseSteamProfilePath("https://steamcommunity.com/id/ttv_gaben-2")
+    ).toBe("id/ttv_gaben-2");
+  });
+
   it("rejects non-numeric steam64 ids", () => {
     expect(
       parseSteamProfilePath("https://steamcommunity.com/profiles/notanid")
+    ).toBeNull();
+  });
+
+  it("rejects steam64 ids with trailing junk", () => {
+    expect(
+      parseSteamProfilePath("https://steamcommunity.com/profiles/123abc")
+    ).toBeNull();
+  });
+
+  it("rejects vanity ids with invalid or percent-encoded characters", () => {
+    expect(
+      parseSteamProfilePath("https://steamcommunity.com/id/..%2F..%2Fevil")
+    ).toBeNull();
+    expect(
+      parseSteamProfilePath("https://steamcommunity.com/id/foo bar")
+    ).toBeNull();
+    expect(
+      parseSteamProfilePath("https://steamcommunity.com/id/foo.bar")
     ).toBeNull();
   });
 

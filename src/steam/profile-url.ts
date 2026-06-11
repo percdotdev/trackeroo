@@ -1,4 +1,8 @@
-const PROFILE_PATH_RE = /^\/(id\/[^/?#]+|profiles\/\d+)/;
+// Steam vanity IDs only allow ASCII alphanumerics, underscores, and hyphens.
+// Requiring a path boundary after the ID rejects malformed segments (e.g.
+// percent-encoded characters) instead of truncating them, so crafted URLs
+// can't smuggle unexpected path content into generated tracker links.
+const PROFILE_PATH_RE = /^\/(id\/[\w-]+|profiles\/\d+)(?=\/|$)/;
 
 export function parseSteamProfilePath(url: string): string | null {
   try {
