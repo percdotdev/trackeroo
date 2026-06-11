@@ -39,6 +39,17 @@ describe("getTrackerPreferences", () => {
     expect(await getTrackerPreferences()).toEqual(getDefaultPreferences());
   });
 
+  it("falls back to enabled for non-boolean stored values", async () => {
+    await fakeBrowser.storage.local.set({
+      [TRACKER_PREFERENCES_KEY]: { csstats: "nope", csrep: 0, leetify: false },
+    });
+
+    const preferences = await getTrackerPreferences();
+    expect(preferences.csstats).toBe(true);
+    expect(preferences.csrep).toBe(true);
+    expect(preferences.leetify).toBe(false);
+  });
+
   it("drops keys for removed trackers", async () => {
     await fakeBrowser.storage.local.set({
       [TRACKER_PREFERENCES_KEY]: { ghostTracker: true, csstats: false },
