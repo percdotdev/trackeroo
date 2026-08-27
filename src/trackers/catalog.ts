@@ -36,6 +36,11 @@ export const TRACKERS: Tracker[] = [
     homeUrl: "https://scope.gg",
     transform: { type: "tld", value: "org" },
   },
+  {
+    id: "cstracker",
+    homeUrl: "https://cstracker.gg",
+    transform: { type: "tld", value: "now" },
+  },
 ];
 
 export const TRACKER_IDS = TRACKERS.map((tracker) => tracker.id);

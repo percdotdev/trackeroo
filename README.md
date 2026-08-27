@@ -12,7 +12,7 @@ To run the latest build before it's published, load unpacked from a release zip 
 
 ## Trackers
 
-[CSStats](https://csstats.gg) · [CSRep](https://csrep.gg) · [CSST](https://csst.at) · [Luminary](https://luminary.pw) · [Leetify](https://leetify.com) · [CS2 Tracker](https://cs2tracker.gg) · [Scope.gg](https://scope.gg)
+[CSStats](https://csstats.gg) · [CSRep](https://csrep.gg) · [CSST](https://csst.at) · [Luminary](https://luminary.pw) · [Leetify](https://leetify.com) · [CS2 Tracker](https://cs2tracker.gg) · [Scope.gg](https://scope.gg) · [cstracker.gg](https://cstracker.gg)
 
 Turn individual sites on or off from the extension icon (popup → Trackers).
 
